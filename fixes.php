@@ -12,9 +12,13 @@ rename('composer.lock', '.sys/composer.lock');
 
 rename('vendor', '.sys/vendor');
 
-mkdir('.merged', 0777);
+mkdir('.merged');
 
-mkdir('.sys/locks', 0777);
+chmod('.merged', 0777);
+
+mkdir('.sys/locks');
+
+chmod('.sys/locks', 0777);
 
 chmod('.sys/log', 0777);
 
