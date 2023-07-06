@@ -25,7 +25,7 @@ class Shared extends \SFW\Config
              *
              * string
              */
-            'site_name' => 'Clean SFW',
+            'site_name' => 'SFW',
 
             // }}}
         ];

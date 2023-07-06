@@ -26,7 +26,7 @@ class RobotsTxt extends \SFW\Point
         }
 
         $this->robots[] = sprintf('Host: %s',
-             self::$e['defaults']['basic_url']
+            self::$e['defaults']['basic_url']
         );
 
         if (self::$config['shared']['robots']) {
