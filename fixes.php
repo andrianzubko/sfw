@@ -1,5 +1,7 @@
 <?php
 
+unlink(__FILE__);
+
 unlink('LICENSE');
 
 unlink('README.md');
@@ -17,5 +19,3 @@ chmod('.sys/locks', 0777);
 chmod('.sys/log', 0777);
 
 exec('git init && git add . && git commit -m "new"');
-
-unlink(__FILE__);
