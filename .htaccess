@@ -1,0 +1,7 @@
+ErrorDocument 500 /.bin/errors/500.php
+ErrorDocument 400 /.bin/errors/400.php
+ErrorDocument 403 /.bin/errors/403.php
+ErrorDocument 404 /.bin/errors/404.php
+
+RewriteEngine On
+RewriteRule ^([^\.]|$) /.bin/index.php
