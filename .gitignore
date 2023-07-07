@@ -1,4 +1,4 @@
-/.sys/locks/
-/.sys/log/
+/.sys/var/locks/
+/.sys/var/log/
 /.sys/src/Config/
 /.idea/
