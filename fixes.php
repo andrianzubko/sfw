@@ -16,10 +16,8 @@ mkdir('.merged');
 
 chmod('.merged', 0777);
 
-mkdir('.sys/locks');
+mkdir('.sys/var');
 
-chmod('.sys/locks', 0777);
-
-chmod('.sys/log', 0777);
+chmod('.sys/var', 0777);
 
 exec('git init && git add . && git commit -m "new"');
