@@ -1,5 +1,7 @@
 <?php
 
+unlink(__FILE__);
+
 unlink('LICENSE');
 
 unlink('README.md');
@@ -17,9 +19,5 @@ chmod('.merged', 0777);
 mkdir('.sys/var');
 
 chmod('.sys/var', 0777);
-
-require '.bin/index.php';
-
-unlink(__FILE__);
 
 exec('git init && git add . && git commit -m "new"');
