@@ -1,6 +1,6 @@
 {
     "name": "andrianzubko/sfw",
-    "description": "Simplest framework (almost clean version)",
+    "description": "Simplest framework",
     "type": "project",
     "license": "GPL-3.0-or-later",
     "autoload": {
