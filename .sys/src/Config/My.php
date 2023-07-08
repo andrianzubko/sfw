@@ -13,6 +13,15 @@ class My extends \SFW\Config
     public function get(): array
     {
         return [
+            // {{{ frontend
+
+            /* Recombine css and js files (always disable at production).
+             *
+             * bool
+             */
+            'recombine_css_and_js' => true,
+
+            // }}}
             // {{{ mail
 
             /* Mailer default sender.

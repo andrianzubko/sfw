@@ -22,8 +22,6 @@ class Environment extends \SFW\Lazy\My
         // }}}
         // {{{ session and etc..
 
-
-
         // }}}
     }
 }
