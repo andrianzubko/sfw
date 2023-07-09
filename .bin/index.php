@@ -1,6 +1,6 @@
 <?php
 
-ini_set('display_errors', php_sapi_name() === 'cli');
+ini_set('display_errors', PHP_SAPI === 'cli');
 
 ini_set('error_reporting', -1);
 

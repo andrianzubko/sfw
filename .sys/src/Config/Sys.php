@@ -19,6 +19,8 @@ class Sys extends \SFW\Config
 
         // {{{ overrides
 
+        $sys['env'] = 'dev';
+
         // }}}
 
         return $sys;
