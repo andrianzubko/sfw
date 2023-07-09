@@ -27,25 +27,6 @@ class Index extends \SFW\Point
         $this->my('Environment')->get();
 
         // }}}
-        // {{{ example query
-
-        //$result = $this->sys('Db')->query(
-        //    sprintf("
-        //        SELECT %s",
-        //            $this->sys('Db')->number(1)
-        //    )
-        //);
-        //
-        //self::$e['something'] = $result->fetchAll();
-
-        // }}}
-        // {{{ example message
-
-        //$this->sys('Notifier')->add(
-        //    new \App\Notify\Example('your@mail.com', 'Hello!')
-        //);
-
-        // }}}
 
         return true;
     }

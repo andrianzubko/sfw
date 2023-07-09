@@ -10,7 +10,7 @@
       <? } ?>
       <meta name="viewport" content="width=device-width">
       <title><? $this->h($this->title) ?></title>
-      <base href="<? $this->h($this->e['defaults']['basic_url']) ?>/">
+      <base href="<? $this->h($this->e['defaults']['url']) ?>/">
       <link rel="stylesheet" type="text/css" href="/.merged/<? $this->s($this->e['defaults']['merged']) ?>.all.css">
       <link rel="shortcut icon" href="/.media/favicon.ico">
     </head>

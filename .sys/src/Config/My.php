@@ -10,33 +10,26 @@ class My extends \SFW\Config
     /**
      * Returns array with config parameters.
      */
-    public function get(): array
+    public static function get(): array
     {
-        return [
-            // {{{ frontend
+        $my = [];
 
-            /* Recombine css and js files (always disable at production).
-             *
-             * bool
-             */
-            'recombine_css_and_js' => true,
+        // {{{ notifier
 
-            // }}}
-            // {{{ mail
+        /* Default sender.
+         *
+         * 'EMAIL' or array('EMAIL'[, 'NAME'])
+         */
+        $my['notifier']['sender'] = ['example@domain.com', 'Sender'];
 
-            /* Mailer default sender.
-             *
-             * 'EMAIL' or array('EMAIL'[, 'NAME'])
-             */
-            'mailer_default_sender' => ['example@domain.com', 'Sender'],
+        /* Default replies.
+         *
+         * array('EMAIL' or array('EMAIL'[, 'NAME']), ...)
+         */
+        $my['notifier']['replies'] = [];
 
-            /* Mailer default replies.
-             *
-             * array('EMAIL' or array('EMAIL'[, 'NAME']), ...)
-             */
-            'mailer_default_replies' => [],
+        // }}}
 
-            // }}}
-        ];
+        return $my;
     }
 }

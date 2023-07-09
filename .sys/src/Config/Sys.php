@@ -5,18 +5,22 @@ namespace App\Config;
 /**
  * System config (not available from templates).
  *
- * This config is merged with basic system config
- * and here allowed only properties from there!
+ * Only override needed parameters from basic system config.
+ * Don't add here your own new parameters!
  */
 class Sys extends \SFW\Config
 {
     /**
      * Returns array with config parameters.
      */
-    public function get(): array
+    public static function get(): array
     {
-        return array_merge((new \SFW\Config\Sys())->get(), [
+        $sys = \SFW\Config\Sys::get();
 
-        ]);
+        // {{{ overrides
+
+        // }}}
+
+        return $sys;
     }
 }

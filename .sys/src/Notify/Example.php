@@ -24,11 +24,11 @@ class Example extends \SFW\Notify
 
         $struct->subject = 'Example message';
 
-        $struct->sender = self::$config['my']['mailer_default_sender'];
+        $struct->sender = self::$config['my']['notifier']['sender'];
 
         $struct->recipients[] = $this->email;
 
-        $struct->replies = self::$config['my']['mailer_default_replies'];
+        $struct->replies = self::$config['my']['notifier']['replies'];
 
         $struct->e['message'] = $this->message;
 

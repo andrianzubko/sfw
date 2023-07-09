@@ -10,24 +10,26 @@ class Shared extends \SFW\Config
     /**
      * Returns array with config parameters.
      */
-    public function get(): array
+    public static function get(): array
     {
-        return [
-            // {{{ etc
+        $shared = [];
 
-            /* Allow robots.
-             *
-             * bool
-             */
-            'robots' => false,
+        // {{{ etc
 
-            /* Site name.
-             *
-             * string
-             */
-            'site_name' => 'SFW',
+        /* Allow robots.
+         *
+         * bool
+         */
+        $shared['robots'] = false;
 
-            // }}}
-        ];
+        /* Application name.
+         *
+         * string
+         */
+        $shared['name'] = 'SFW';
+
+        // }}}
+
+        return $shared;
     }
 }

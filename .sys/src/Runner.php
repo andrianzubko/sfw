@@ -16,7 +16,7 @@ class Runner extends \SFW\Runner
 
         $merger = new \SFW\Merger('.merged');
 
-        if (self::$config['my']['recombine_css_and_js']) {
+        if (self::$config['sys']['env'] !== 'prod') {
             $merger->recombine(
                 [
                     '.css/primary/*.css' => [

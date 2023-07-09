@@ -21,7 +21,7 @@ class SitemapXml extends \SFW\Point
 
         $this->sitemap['xmlns'] = 'https://www.sitemaps.org/schemas/sitemap/0.9';
 
-        $this->sitemap->addChild('url')->loc = self::$e['defaults']['basic_url'];
+        $this->sitemap->addChild('url')->loc = self::$e['defaults']['url'];
 
         // }}}
         // {{{ output
