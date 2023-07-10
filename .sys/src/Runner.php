@@ -35,7 +35,7 @@ class Runner extends \SFW\Runner
                         'all.js',
                         'secondary.js',
                     ],
-                ]
+                ], !self::$config['sys']['debug']
             );
         }
 

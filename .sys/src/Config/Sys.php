@@ -21,6 +21,8 @@ class Sys extends \SFW\Config
 
         $sys['env'] = 'dev';
 
+        $sys['debug'] = false;
+
         // }}}
 
         return $sys;
