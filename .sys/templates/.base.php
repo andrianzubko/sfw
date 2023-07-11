@@ -1,28 +1,28 @@
 
-<? $this->title = '' ?>
+<?php $this->title = '' ?>
 
-<? $this->main = function () { ?>
+<?php $this->main = function () { ?>
   <!DOCTYPE html>
   <html>
     <head>
-      <? if (!$this->e['config']['robots']) { ?>
+      <?php if (!$this->e['config']['robots']) { ?>
         <meta name="robots" content="noindex,nofollow">
-      <? } ?>
+      <?php } ?>
       <meta name="viewport" content="width=device-width">
-      <title><? $this->h($this->title) ?></title>
-      <base href="<? $this->h($this->e['defaults']['url']) ?>/">
-      <link rel="stylesheet" type="text/css" href="/.merged/<? $this->s($this->e['defaults']['merged']) ?>.all.css">
+      <title><?= $this->h($this->title) ?></title>
+      <base href="<?= $this->h($this->e['defaults']['url']) ?>/">
+      <link rel="stylesheet" type="text/css" href="<?= $this->e['defaults']['merged']['all.css'] ?>">
       <link rel="shortcut icon" href="/.media/favicon.ico">
     </head>
-    <? $this->body() ?>
+    <?php $this->body() ?>
   </html>
-<? } ?>
+<?php } ?>
 
-<? $this->body = function () { ?>
+<?php $this->body = function () { ?>
   <body>
     <div>
-      <? $this->content() ?>
+      <?php $this->content() ?>
     </div>
-    <script src="/.merged/<? $this->s($this->e['defaults']['merged']) ?>.all.js"></script>
+    <script src="<?= $this->e['defaults']['merged']['all.js'] ?>"></script>
   </body>
-<? } ?>
+<?php } ?>

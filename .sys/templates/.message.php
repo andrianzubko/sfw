@@ -1,16 +1,16 @@
 
-<? $this->main = function () { ?>
+<?php $this->main = function () { ?>
   <!DOCTYPE html>
   <html>
     <head>
-      <? $this->head() ?>
+      <?php $this->head() ?>
     </head>
     <body>
-      <? $this->body() ?>
+      <?php $this->body() ?>
     </body>
   </html>
-<? } ?>
+<?php } ?>
 
-<? $this->head = function () { ?>
+<?php $this->head = function () { ?>
 
-<? } ?>
+<?php } ?>
