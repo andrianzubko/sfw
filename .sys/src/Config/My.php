@@ -14,6 +14,38 @@ class My extends \SFW\Config
     {
         $my = [];
 
+        // {{{ merger
+
+        /* Where will be merged CSS and JS files (relative to public).
+         *
+         * string
+         */
+        $my['merger']['dir'] = '.merged';
+
+        /* Sources to merge (sources relative to public, targets relative to merged dir).
+         *
+         * array
+         */
+        $my['merger']['sources'] = [
+            '.css/primary/*.css' => [
+                'all.css',
+                'primary.css',
+            ],
+            '.css/secondary/*.css' => [
+                'all.css',
+                'secondary.css',
+            ],
+            '.js/primary/*.js' => [
+                'all.js',
+                'primary.js',
+            ],
+            '.js/secondary/*.js' => [
+                'all.js',
+                'secondary.js',
+            ],
+        ];
+
+        // }}}
         // {{{ notifier
 
         /* Default sender.

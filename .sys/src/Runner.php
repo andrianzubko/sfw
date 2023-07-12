@@ -18,24 +18,8 @@ class Runner extends \SFW\Runner
 
         if (self::$config['sys']['env'] !== 'prod') {
             $merger->recombine(
-                [
-                    '.css/primary/*.css' => [
-                        'all.css',
-                        'primary.css',
-                    ],
-                    '.css/secondary/*.css' => [
-                        'all.css',
-                        'secondary.css',
-                    ],
-                    '.js/primary/*.js' => [
-                        'all.js',
-                        'primary.js',
-                    ],
-                    '.js/secondary/*.js' => [
-                        'all.js',
-                        'secondary.js',
-                    ],
-                ], !self::$config['sys']['debug']
+                self::$config['my']['merger']['sources'],
+                    !self::$config['sys']['debug']
             );
         }
 
