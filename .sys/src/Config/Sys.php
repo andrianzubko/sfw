@@ -19,9 +19,9 @@ class Sys extends \SFW\Config
 
         // {{{ overrides
 
-        $sys['env'] = 'dev';
+        $sys['env'] = self::env('APP_ENV', $sys['env']);
 
-        $sys['debug'] = false;
+        $sys['debug'] = self::env('APP_DEBUG', $sys['debug']);
 
         // }}}
 

@@ -20,7 +20,7 @@ class Shared extends \SFW\Config
          *
          * bool
          */
-        $shared['robots'] = false;
+        $shared['robots'] = self::env('APP_ROBOTS', false);
 
         /* Application name.
          *

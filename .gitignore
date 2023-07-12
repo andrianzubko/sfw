@@ -1,5 +1,6 @@
-/.sys/src/Config/
 /.sys/var/locks/
 /.sys/var/log/
 /.sys/vendor/
+/.sys/.env.php
+/.sys/.env.*.php
 /.idea/
