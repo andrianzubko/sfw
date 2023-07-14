@@ -1,7 +1,17 @@
+RewriteEngine On
+
+RewriteRule ^[^\.]|^$ /.bin/index.php
+
+RewriteRule ^\.(ht|git|sys|idea|editorconfig) - [F]
+
+<If "%{REQUEST_URI} =~ m#^/\.bin/#">
+    SetEnv no-gzip 1
+</If>
+<Else>
+    SetHandler default-handler
+</Else>
+
 ErrorDocument 500 /.bin/errors/500.php
 ErrorDocument 400 /.bin/errors/400.php
 ErrorDocument 403 /.bin/errors/403.php
 ErrorDocument 404 /.bin/errors/404.php
-
-RewriteEngine On
-RewriteRule ^([^\.]|$) /.bin/index.php
