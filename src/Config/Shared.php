@@ -26,7 +26,7 @@ class Shared extends \SFW\Config
          *
          * string
          */
-        $shared['name'] = 'SFW';
+        $shared['name'] = 'Simplest framework';
 
         // }}}
 

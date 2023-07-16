@@ -1,6 +1,5 @@
-/.sys/var/locks/
-/.sys/var/log/
-/.sys/vendor/
-/.sys/.env.php
-/.sys/.env.*.php
+/var/
+/vendor/
 /.idea/
+/.env.php
+/.env.*.php

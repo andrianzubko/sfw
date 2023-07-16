@@ -9,7 +9,9 @@ class Environment extends \SFW\Lazy\My
         // {{{ redirecting to basic url
 
         if ($redirect
-            && (self::$e['defaults']['url_scheme'] !== (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off' ? 'http' : 'https')
+            && (self::$e['defaults']['url_scheme'] !== (
+                    empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off'
+                        ? 'http' : 'https')
                || self::$e['defaults']['url_host'] !== $_SERVER['HTTP_HOST'])
         ) {
             if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -21,6 +23,8 @@ class Environment extends \SFW\Lazy\My
 
         // }}}
         // {{{ session and etc..
+
+
 
         // }}}
     }

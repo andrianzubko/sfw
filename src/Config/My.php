@@ -16,32 +16,16 @@ class My extends \SFW\Config
 
         // {{{ merger
 
-        /* Where will be merged CSS and JS files (relative to public).
-         *
-         * string
-         */
-        $my['merger']['dir'] = '.merged';
-
-        /* Sources to merge (sources relative to public, targets relative to merged dir).
+        /* Sources to merge (sources are absolute, targets are just filenames).
          *
          * array
          */
         $my['merger']['sources'] = [
-            '.css/primary/*.css' => [
+            APP_DIR . '/assets/css/*.css' => [
                 'all.css',
-                'primary.css',
             ],
-            '.css/secondary/*.css' => [
-                'all.css',
-                'secondary.css',
-            ],
-            '.js/primary/*.js' => [
+            APP_DIR . '/assets/js/*.js' => [
                 'all.js',
-                'primary.js',
-            ],
-            '.js/secondary/*.js' => [
-                'all.js',
-                'secondary.js',
             ],
         ];
 

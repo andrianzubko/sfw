@@ -1,21 +1,13 @@
 <?php
 
-unlink(__FILE__);
-
 unlink('LICENSE');
 
 unlink('README.md');
 
-rename('composer.json', '.sys/composer.json');
+mkdir('var');
 
-rename('composer.lock', '.sys/composer.lock');
+chmod('var', 0777);
 
-rename('vendor', '.sys/vendor');
-
-mkdir('.merged');
-
-chmod('.merged', 0777);
-
-chmod('.sys/var', 0777);
+unlink(__FILE__);
 
 exec('git init && git add . && git commit -m "new"');

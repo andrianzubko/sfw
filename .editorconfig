@@ -11,5 +11,8 @@ trim_trailing_whitespace = true
 [*.xml]
 indent_size = 2
 
-[.sys/templates/*.php]
+[templates/*.php]
+indent_size = 2
+
+[public/.bin/errors/*.php]
 indent_size = 2
