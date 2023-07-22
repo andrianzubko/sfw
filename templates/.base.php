@@ -11,7 +11,7 @@
       <meta name="viewport" content="width=device-width">
       <title><?= $this->h($this->title) ?></title>
       <base href="<?= $this->h($this->e['defaults']['url']) ?>/">
-      <link rel="stylesheet" type="text/css" href="<?= $this->e['defaults']['merged']['all.css'] ?>">
+      <link rel="stylesheet" type="text/css" href="<?= $this->e['defaults']['merged']['css'] ?>">
       <link rel="shortcut icon" href="/.media/favicon.ico">
     </head>
     <?php $this->body() ?>
@@ -23,6 +23,6 @@
     <div>
       <?php $this->content() ?>
     </div>
-    <script src="<?= $this->e['defaults']['merged']['all.js'] ?>"></script>
+    <script src="<?= $this->e['defaults']['merged']['js'] ?>"></script>
   </body>
 <?php } ?>

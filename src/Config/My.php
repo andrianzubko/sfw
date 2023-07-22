@@ -22,10 +22,10 @@ class My extends \SFW\Config
          */
         $my['merger']['sources'] = [
             APP_DIR . '/assets/css/*.css' => [
-                'all.css',
+                'css',
             ],
             APP_DIR . '/assets/js/*.js' => [
-                'all.js',
+                'js',
             ],
         ];
 
