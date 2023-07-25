@@ -31,17 +31,17 @@
         "sort-packages": true
     },
     "scripts": {
-        "clean": [
+        "cleanup": [
             "rm -rf var/cache"
         ],
         "post-create-project-cmd": [
             "@php fixes.php"
         ],
         "post-install-cmd": [
-            "@clean"
+            "@cleanup"
         ],
         "post-update-cmd": [
-            "@clean"
+            "@cleanup"
         ]
     }
 }
