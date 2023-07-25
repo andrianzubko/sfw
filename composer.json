@@ -31,8 +31,17 @@
         "sort-packages": true
     },
     "scripts": {
+        "clean": [
+            "rm -rf var/cache"
+        ],
         "post-create-project-cmd": [
             "@php fixes.php"
+        ],
+        "post-install-cmd": [
+            "@clean"
+        ],
+        "post-update-cmd": [
+            "@clean"
         ]
     }
 }
