@@ -8,6 +8,9 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
+[*.xsl]
+indent_size = 2
+
 [*.xml]
 indent_size = 2
 
