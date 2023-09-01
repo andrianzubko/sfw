@@ -1,7 +1,5 @@
 <?php
 
-unlink('LICENSE');
-
 unlink('README.md');
 
 mkdir('var');

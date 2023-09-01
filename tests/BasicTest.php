@@ -14,30 +14,70 @@ class BasicTest extends TestCase
 
             } elseif (is_dir("$dir/$file")) {
                 $this->testClassesInclude("$dir/$file");
+            } elseif (
+                str_ends_with($file, '.php')
+            ) {
+                $result = include_once "$dir/$file";
 
-            } elseif (str_ends_with($file, '.php')) {
-                $status = include_once "$dir/$file";
-
-                $this->assertNotFalse($status);
+                $this->assertNotFalse($result);
             }
         }
     }
 
     /**
-     * Syntax checking at all templates.
+     * Syntax checking at all native templates.
      */
-    public function testTemplatesSyntax(string $dir = APP_DIR . '/templates'): void
+    public function testNativeTemplatesSyntax(?string $dir = null): void
     {
+        if (!isset($dir)) {
+            $dir = (new \App\Runner())::$config['sys']['templater']['native']['dir'];
+        }
+
         foreach (scandir($dir) as $file) {
             if ($file === '.' || $file === '..') {
 
             } elseif (is_dir("$dir/$file")) {
-                $this->testTemplatesSyntax("$dir/$file");
+                $this->testNativeTemplatesSyntax("$dir/$file");
+            } elseif (
+                str_ends_with($file, '.php')
+            ) {
+                exec("php -l $dir/$file", result_code: $result);
 
-            } elseif (str_ends_with($file, '.php')) {
-                exec("php -l $dir/$file", result_code: $code);
+                $this->assertSame(0, $result);
+            }
+        }
+    }
 
-                $this->assertSame(0, $code);
+    /**
+     * Syntax checking at all xsl templates.
+     */
+    public function testXslTemplatesSyntax(?string $dir = null): void
+    {
+        if (!isset($dir)) {
+            $dir = (new \App\Runner())::$config['sys']['templater']['xslt']['dir'];
+        }
+
+        foreach (scandir($dir) as $file) {
+            if ($file === '.' || $file === '..') {
+
+            } elseif (is_dir("$dir/$file")) {
+                $this->testXslTemplatesSyntax("$dir/$file");
+            } elseif (
+                str_ends_with($file, '.xsl')
+            ) {
+                $doc = new \DOMDocument;
+
+                $success = $doc->load("$dir/$file", LIBXML_NOCDATA);
+
+                $this->assertNotFalse($success);
+
+                if ($success) {
+                    $processor = new \XSLTProcessor;
+
+                    $success = $processor->importStylesheet($doc);
+
+                    $this->assertNotFalse($success);
+                }
             }
         }
     }
