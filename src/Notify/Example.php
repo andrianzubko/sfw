@@ -32,11 +32,7 @@ class Example extends \SFW\Notify
 
         $struct->e['message'] = $this->message;
 
-        try {
-            $struct->body = $this->sys('Templater')->transform($struct->e, '.message.example.php');
-        } catch (\SFW\Templater\Exception $error) {
-            $this->sys('Abend')->error($error);
-        }
+        $struct->body = $this->sys('Templater')->transform($struct->e, '.message.example.php');
 
         $structs[] = $struct;
 
