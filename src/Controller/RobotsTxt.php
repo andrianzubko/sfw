@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Point;
+namespace App\Controller;
 
-class RobotsTxt extends \SFW\Point
+class RobotsTxt extends \SFW\Controller
 {
     public function __construct()
     {
@@ -26,12 +26,12 @@ class RobotsTxt extends \SFW\Point
         }
 
         $this->robots[] = sprintf('Host: %s',
-            self::$e['defaults']['url']
+            self::$e['sys']['url']
         );
 
         if (self::$config['shared']['robots']) {
             $this->robots[] = sprintf('Sitemap: %s/sitemap.xml',
-                self::$e['defaults']['url']
+                self::$e['sys']['url']
             );
         }
 

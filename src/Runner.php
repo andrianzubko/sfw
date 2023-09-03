@@ -16,7 +16,7 @@ class Runner extends \SFW\Runner
 
         $merger = new \SFW\Merger(self::$config['my']['merger']['sources']);
 
-        self::$e['defaults']['merged'] = $merger->get(
+        self::$e['sys']['merged'] = $merger->get(
             [
                 'recheck' => self::$config['sys']['env'] !== 'prod',
 

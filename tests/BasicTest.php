@@ -30,7 +30,7 @@ class BasicTest extends TestCase
     public function testNativeTemplatesSyntax(?string $dir = null): void
     {
         if (!isset($dir)) {
-            $dir = (new \App\Runner())::$config['sys']['templater']['native']['dir'];
+            $dir = \App\Runner::$config['sys']['templater']['native']['dir'];
         }
 
         foreach (scandir($dir) as $file) {
@@ -54,7 +54,7 @@ class BasicTest extends TestCase
     public function testXslTemplatesSyntax(?string $dir = null): void
     {
         if (!isset($dir)) {
-            $dir = (new \App\Runner())::$config['sys']['templater']['xslt']['dir'];
+            $dir = \App\Runner::$config['sys']['templater']['xslt']['dir'];
         }
 
         foreach (scandir($dir) as $file) {

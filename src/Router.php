@@ -8,7 +8,7 @@ namespace App;
 class Router extends \SFW\Router
 {
     /**
-     * Route from request url to entry point.
+     * Route from request url to Controller class.
      */
     public function get(): string|false
     {

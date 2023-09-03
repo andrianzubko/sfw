@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Point;
+namespace App\Controller;
 
-class Index extends \SFW\Point
+class Index extends \SFW\Controller
 {
     public function __construct()
     {

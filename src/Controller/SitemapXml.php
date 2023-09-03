@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Point;
+namespace App\Controller;
 
-class SitemapXml extends \SFW\Point
+class SitemapXml extends \SFW\Controller
 {
     public function __construct()
     {
@@ -21,7 +21,7 @@ class SitemapXml extends \SFW\Point
 
         $this->sitemap['xmlns'] = 'https://www.sitemaps.org/schemas/sitemap/0.9';
 
-        $this->sitemap->addChild('url')->loc = self::$e['defaults']['url'];
+        $this->sitemap->addChild('url')->loc = self::$e['sys']['url'];
 
         // }}}
         // {{{ output
