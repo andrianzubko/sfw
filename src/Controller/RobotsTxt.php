@@ -38,7 +38,7 @@ class RobotsTxt extends \SFW\Controller
         // }}}
         // {{{ output
 
-        $this->sys('Out')->inline(implode("\n", $this->robots) . "\n");
+        $this->sys('Response')->inline(implode("\n", $this->robots));
 
         // }}}
     }

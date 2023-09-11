@@ -26,7 +26,7 @@ class SitemapXml extends \SFW\Controller
         // }}}
         // {{{ output
 
-        $this->sys('Out')->inline($this->sitemap->asXML(), 'text/xml');
+        $this->sys('Response')->inline($this->sitemap->asXML(), 'text/xml');
 
         // }}}
     }

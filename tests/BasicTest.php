@@ -91,8 +91,6 @@ class BasicTest extends TestCase
 
         $this->assertSame('', $app->sys('Text')->trim(' '));
 
-        $router = new \App\Router();
-
-        $this->assertSame('Index', $router->get());
+        $this->assertSame('Index', (new \App\Router())->get());
     }
 }

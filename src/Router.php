@@ -16,9 +16,9 @@ class Router extends \SFW\Router
             return false;
         }
 
-        $controller = '';
-
         $i = 0;
+
+        $controller = [];
 
         foreach (explode('/', $_SERVER['REQUEST_URL']) as $chunk) {
             if ($chunk === '') {
@@ -39,19 +39,17 @@ class Router extends \SFW\Router
                 $_REQUEST[$name] = $_GET[$name] = $chunk;
             } else {
                 foreach (preg_split('/\W/', $chunk) as $subChunk) {
-                    $controller .= ucfirst($subChunk);
+                    $controller[] = ucfirst($subChunk);
                 }
             }
         }
 
-        if ($controller === '') {
+        if (!$controller) {
             return 'Index';
         }
 
-        if ($controller === 'Index') {
-            return false;
-        }
+        $controller = implode($controller);
 
-        return $controller;
+        return $controller === 'Index' ? false : $controller;
     }
 }

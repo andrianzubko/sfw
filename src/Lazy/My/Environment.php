@@ -12,7 +12,7 @@ class Environment extends \SFW\Lazy\My
             && (self::$e['sys']['url_scheme'] !== $_SERVER['HTTP_SCHEME']
                || self::$e['sys']['url_host'] !== $_SERVER['HTTP_HOST'])
         ) {
-            $this->sys('Out')->redirect(
+            $this->sys('Response')->redirect(
                 $_SERVER['REQUEST_METHOD'] !== 'POST'
                     ? self::$e['sys']['url'] . $_SERVER['REQUEST_URI']
                     : self::$e['sys']['url']
