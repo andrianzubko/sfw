@@ -18,9 +18,7 @@
         "php": "^8.2",
         "ext-curl": "*",
         "ext-gd": "*",
-        "ext-intl": "*",
         "ext-mbstring": "*",
-        "ext-simplexml": "*",
         "andrianzubko/sfw-core": "^0"
     },
     "require-dev": {
