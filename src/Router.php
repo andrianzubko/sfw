@@ -22,9 +22,10 @@ class Router extends \SFW\Router
 
         foreach (explode('/', $_SERVER['REQUEST_URL']) as $chunk) {
             if ($chunk === '') {
+                continue;
+            }
 
-            } elseif (
-                preg_match('/^
+            if (preg_match('/^
                     (?:
                         \d+
                         |

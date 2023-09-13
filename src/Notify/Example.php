@@ -15,6 +15,8 @@ class Example extends \SFW\Notify
      * Build and return array of structures.
      *
      * This method called after browser disconnect.
+     *
+     * @throws \SFW\Exception
      */
     public function build(\SFW\NotifyStruct $defaultStruct): array
     {
