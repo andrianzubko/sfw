@@ -1,11 +1,13 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\{TestCase, AssertionFailedError, ExpectationFailedException};
 
 class BasicTest extends TestCase
 {
     /**
      * Including all classes.
+     *
+     * @throws ExpectationFailedException
      */
     public function testClassesInclude(string $dir = APP_DIR . '/src'): void
     {
@@ -28,6 +30,8 @@ class BasicTest extends TestCase
 
     /**
      * Syntax checking at all native templates.
+     *
+     * @throws ExpectationFailedException
      */
     public function testNativeTemplatesSyntax(?string $dir = null): void
     {
@@ -54,6 +58,8 @@ class BasicTest extends TestCase
 
     /**
      * Syntax checking at all xsl templates.
+     *
+     * @throws AssertionFailedError
      */
     public function testXslTemplatesSyntax(?string $dir = null): void
     {
@@ -97,6 +103,8 @@ class BasicTest extends TestCase
 
     /**
      * Example of testing site functionality.
+     *
+     * @throws ExpectationFailedException
      */
     public function testSome(): void
     {

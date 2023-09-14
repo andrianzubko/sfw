@@ -18,6 +18,8 @@
         "php": "^8.2",
         "ext-curl": "*",
         "ext-gd": "*",
+        "ext-intl": "*",
+        "ext-zlib": "*",
         "ext-mbstring": "*",
         "andrianzubko/sfw-core": "^0"
     },
