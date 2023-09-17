@@ -81,14 +81,14 @@ class BasicTest extends TestCase
                     && extension_loaded('dom')
                     && extension_loaded('xsl')
                 ) {
-                    $doc = new DOMDocument;
+                    $doc = new DOMDocument();
 
                     $success = $doc->load("$dir/$file", LIBXML_NOCDATA);
 
                     $this->assertNotFalse($success);
 
                     if ($success) {
-                        $processor = new XSLTProcessor;
+                        $processor = new XSLTProcessor();
 
                         $success = $processor->importStylesheet($doc);
 
