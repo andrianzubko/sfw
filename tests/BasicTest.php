@@ -114,6 +114,6 @@ class BasicTest extends TestCase
 
         $router = new App\Router();
 
-        $this->assertSame('Index', $router->get());
+        $this->assertSame('Index', $router->getController());
     }
 }

@@ -2,14 +2,18 @@
 
 namespace App\Notify;
 
-class Example extends \SFW\Notify
+class SendMessage extends \SFW\Notify
 {
     /**
      * Fetching data from database.
      *
      * If transaction aborted, all notifies, called at this transaction, will be destroyed.
      */
-    public function __construct(protected string $email, protected string $message) {}
+    public function __construct(
+        protected string $email,
+        protected string $message
+    ) {
+    }
 
     /**
      * Build and return array of structures.

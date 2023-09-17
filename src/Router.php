@@ -10,7 +10,7 @@ class Router extends \SFW\Router
     /**
      * Route from request url to Controller class.
      */
-    public function get(): string|false
+    public function getController(): string|false
     {
         if (!preg_match('~^(?:[\-/.][a-z\d]+)*/?$~i', $_SERVER['REQUEST_URL'])) {
             return false;

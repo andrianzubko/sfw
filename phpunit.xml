@@ -8,7 +8,7 @@
     displayDetailsOnTestsThatTriggerWarnings="true"
     cacheResult="false"
     colors="true"
-    bootstrap="public/.bin/index.php">
+    bootstrap="bin/run">
 
   <testsuites>
     <testsuite name="Tests">
