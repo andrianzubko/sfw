@@ -9,7 +9,7 @@ class Index extends \SFW\Controller
         // {{{ transaction
 
         $this->sys('Transaction')->run("ISOLATION LEVEL REPEATABLE READ, READ ONLY", null,
-            fn() => $this->transactionBody()
+            $this->transactionBody(...)
         );
 
         // }}}
