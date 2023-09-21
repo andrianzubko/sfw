@@ -19,13 +19,7 @@ class Runner extends \SFW\Runner
         if (PHP_SAPI !== 'cli') {
             $merger = new \SFW\Merger(self::$config['my']['merger']['sources']);
 
-            self::$e['sys']['merged'] = $merger->get(
-                [
-                    'recheck' => self::$config['sys']['env'] !== 'prod',
-
-                    'minify' => !self::$config['sys']['debug'],
-                ]
-            );
+            self::$e['sys']['merged'] = $merger->get();
         }
 
         // }}}

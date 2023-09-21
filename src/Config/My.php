@@ -14,7 +14,7 @@ class My extends \SFW\Config
     {
         $my = [];
 
-        // {{{ merger
+        // {{{ your config
 
         /* Sources to merge (sources are absolute, targets are just filenames).
          *
@@ -28,9 +28,6 @@ class My extends \SFW\Config
                 'all.js',
             ],
         ];
-
-        // }}}
-        // {{{ notifier
 
         /* Default sender.
          *

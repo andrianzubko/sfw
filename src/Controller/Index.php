@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+#[\SFW\Route('/')]
 class Index extends \SFW\Controller
 {
     public function __construct()
