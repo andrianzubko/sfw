@@ -5,9 +5,9 @@ namespace App\Notify;
 class SendMessage extends \SFW\Notify
 {
     /**
-     * Fetching data from database.
+     * Fetching data from database or just preparing your notify.
      *
-     * If transaction aborted, all notifies, called at this transaction, will be destroyed.
+     * If notify is created during a transaction, it will only be processed if the commit is successful.
      */
     public function __construct(
         protected string $email,
@@ -22,26 +22,18 @@ class SendMessage extends \SFW\Notify
      *
      * @throws \SFW\Exception
      */
-    public function build(\SFW\NotifyStruct $defaultStruct): array
+    public function build(\SFW\NotifyStruct $defaultStruct): iterable
     {
-        $structs = [];
-
         $struct = clone $defaultStruct;
 
         $struct->subject = 'Example message';
 
-        $struct->sender = self::$config['my']['notifier']['sender'];
-
         $struct->recipients[] = $this->email;
-
-        $struct->replies = self::$config['my']['notifier']['replies'];
 
         $struct->e['message'] = $this->message;
 
         $struct->body = $this->sys('Templater')->transform($struct->e, '.message.example.php');
 
-        $structs[] = $struct;
-
-        return $structs;
+        yield $struct;
     }
 }

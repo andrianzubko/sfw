@@ -16,31 +16,6 @@ class My extends \SFW\Config
 
         // {{{ your config
 
-        /* Sources to merge (sources are absolute, targets are just filenames).
-         *
-         * array
-         */
-        $my['merger']['sources'] = [
-            APP_DIR . '/assets/css/*.css' => [
-                'all.css',
-            ],
-            APP_DIR . '/assets/js/*.js' => [
-                'all.js',
-            ],
-        ];
-
-        /* Default sender.
-         *
-         * 'EMAIL' or array('EMAIL'[, 'NAME'])
-         */
-        $my['notifier']['sender'] = ['example@domain.com', 'Sender'];
-
-        /* Default replies.
-         *
-         * array('EMAIL' or array('EMAIL'[, 'NAME']), ...)
-         */
-        $my['notifier']['replies'] = [];
-
         // }}}
 
         return $my;
