@@ -23,9 +23,18 @@ class Sys extends \SFW\Config
 
         $sys['debug'] = self::env('APP_DEBUG', $sys['debug']);
 
-        // }}}
-        // {{{ pgsql
+        $sys['url'] = self::env('APP_URL', $sys['url']);
 
+        $sys['timezone'] = 'UTC';
+
+        // }}}
+        // {{{ databaser
+
+        $sys['db']['default'] = 'Pgsql';
+
+        /**
+         * Pgsql.
+         */
         $sys['db']['pgsql']['host'] = self::env('APP_PGSQL_HOST', $sys['db']['pgsql']['host']);
 
         $sys['db']['pgsql']['port'] = self::env('APP_PGSQL_PORT', $sys['db']['pgsql']['port']);
@@ -36,9 +45,9 @@ class Sys extends \SFW\Config
 
         $sys['db']['pgsql']['pass'] = self::env('APP_PGSQL_PASS', $sys['db']['pgsql']['pass']);
 
-        // }}}
-        // {{{ mysql
-
+        /**
+         * Mysql.
+         */
         $sys['db']['mysql']['host'] = self::env('APP_MYSQL_HOST', $sys['db']['mysql']['host']);
 
         $sys['db']['mysql']['port'] = self::env('APP_MYSQL_PORT', $sys['db']['mysql']['port']);
@@ -50,21 +59,37 @@ class Sys extends \SFW\Config
         $sys['db']['mysql']['pass'] = self::env('APP_MYSQL_PASS', $sys['db']['mysql']['pass']);
 
         // }}}
+        // {{{ cacher
+
+        $sys['cacher']['default'] = self::env('APP_CACHER', $sys['cacher']['default']);
+
+        // }}}
+        // {{{ templater
+
+        $sys['templater']['default'] = 'Native';
+
+        // }}}
         // {{{ notifier
 
+        $sys['notifier']['enabled'] = self::env('APP_NOTIFIER', $sys['notifier']['enabled']);
+
+        $sys['notifier']['recipients'] = self::env('APP_NOTIFIER_RECIPIENTS', $sys['notifier']['recipients']);
+
         $sys['notifier']['sender'] = self::env('APP_NOTIFIER_SENDER', $sys['notifier']['sender']);
+
+        $sys['notifier']['replies'] = self::env('APP_NOTIFIER_REPLIES', $sys['notifier']['replies']);
 
         // }}}
         // {{{ merger
 
-        $sys['merger']['sources'] = [
-            APP_DIR . '/assets/css/*.css' => [
-                'all.css',
-            ],
-            APP_DIR . '/assets/js/*.js' => [
-                'all.js',
-            ],
-        ];
+        $sys['merger']['sources'][APP_DIR . '/assets/css/*.css'] = ['all.css'];
+
+        $sys['merger']['sources'][APP_DIR . '/assets/js/*.js'] = ['all.js'];
+
+        // }}}
+        // {{{ paginator
+
+        $sys['paginator']['param'] = 'page';
 
         // }}}
 
