@@ -5,7 +5,7 @@ namespace App\Notify;
 class SendMessage extends \SFW\Notify
 {
     /**
-     * Fetching data from database or just preparing your notify.
+     * Fetches data from database or just prepares your notify.
      *
      * If notify is created during a transaction, it will only be processed if the commit is successful.
      */
@@ -16,7 +16,7 @@ class SendMessage extends \SFW\Notify
     }
 
     /**
-     * Build and return array of structures.
+     * Builds and yields or returns structures.
      *
      * This method called after browser disconnect.
      *
