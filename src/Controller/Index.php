@@ -10,7 +10,7 @@ class Index extends \SFW\Controller
         // {{{ transaction
 
         $this->sys('Transaction')->run("ISOLATION LEVEL REPEATABLE READ, READ ONLY", null,
-            $this->transactionBody(...)
+            $this->body(...)
         );
 
         // }}}
@@ -21,7 +21,7 @@ class Index extends \SFW\Controller
         // }}}
     }
 
-    protected function transactionBody(): bool
+    protected function body(): bool
     {
         // {{{ environment
 
