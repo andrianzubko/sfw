@@ -14,12 +14,14 @@ return [
     'APP_PGSQL_DB' => null,
     'APP_PGSQL_USER' => null,
     'APP_PGSQL_PASS' => null,
+    'APP_PGSQL_PERSISTENT' => false,
 
     'APP_MYSQL_HOST' => 'localhost',
     'APP_MYSQL_PORT' => 3306,
     'APP_MYSQL_DB' => null,
     'APP_MYSQL_USER' => null,
     'APP_MYSQL_PASS' => null,
+    'APP_MYSQL_PERSISTENT' => false,
 
     'APP_CACHER' => 'Apc',
 

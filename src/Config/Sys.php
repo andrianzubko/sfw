@@ -25,7 +25,7 @@ class Sys extends \SFW\Config
 
         $sys['url'] = self::env('APP_URL', $sys['url']);
 
-        $sys['timezone'] = 'UTC';
+        $sys['timezone'] = 'Europe/Moscow';
 
         // }}}
         // {{{ databaser
@@ -45,6 +45,8 @@ class Sys extends \SFW\Config
 
         $sys['db']['pgsql']['pass'] = self::env('APP_PGSQL_PASS', $sys['db']['pgsql']['pass']);
 
+        $sys['db']['pgsql']['persistent'] = self::env('APP_PGSQL_PERSISTENT', $sys['db']['pgsql']['persistent']);
+
         /**
          * Mysql.
          */
@@ -57,6 +59,8 @@ class Sys extends \SFW\Config
         $sys['db']['mysql']['user'] = self::env('APP_MYSQL_USER', $sys['db']['mysql']['user']);
 
         $sys['db']['mysql']['pass'] = self::env('APP_MYSQL_PASS', $sys['db']['mysql']['pass']);
+
+        $sys['db']['mysql']['persistent'] = self::env('APP_MYSQL_PERSISTENT', $sys['db']['mysql']['persistent']);
 
         // }}}
         // {{{ cacher
@@ -82,9 +86,13 @@ class Sys extends \SFW\Config
         // }}}
         // {{{ merger
 
-        $sys['merger']['sources'][APP_DIR . '/assets/css/*.css'] = ['all.css'];
+        $sys['merger']['sources'][APP_DIR . '/assets/css/primary/*.css'] = ['css', 'primary.css'];
 
-        $sys['merger']['sources'][APP_DIR . '/assets/js/*.js'] = ['all.js'];
+        $sys['merger']['sources'][APP_DIR . '/assets/css/secondary/*.css'] = ['css', 'secondary.css'];
+
+        $sys['merger']['sources'][APP_DIR . '/assets/js/primary/*.js'] = ['js', 'primary.js'];
+
+        $sys['merger']['sources'][APP_DIR . '/assets/js/secondary/*.js'] = ['js', 'secondary.js'];
 
         // }}}
         // {{{ paginator
