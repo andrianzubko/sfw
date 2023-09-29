@@ -30,9 +30,9 @@ class SendMessage extends \SFW\Notify
 
         $struct->recipients[] = $this->email;
 
-        $struct->e['message'] = $this->message;
+        $struct->context['message'] = $this->message;
 
-        $struct->body = $this->sys('Templater')->transform($struct->e, '.message.example.php');
+        $struct->body = $this->sys('Templater')->transform($struct->context, '.message.example.php');
 
         yield $struct;
     }

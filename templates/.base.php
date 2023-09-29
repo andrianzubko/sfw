@@ -5,24 +5,28 @@
   <!DOCTYPE html>
   <html>
     <head>
-      <?php if (!$this->e['config']['robots']) { ?>
-        <meta name="robots" content="noindex,nofollow">
-      <?php } ?>
-      <meta name="viewport" content="width=device-width">
-      <title><?= $this->h($this->title) ?></title>
-      <base href="<?= $this->e['sys']['url'] ?>">
-      <link rel="stylesheet" type="text/css" href="<?= $this->e['sys']['merged']['all.css'] ?>">
-      <link rel="shortcut icon" href="/.media/favicon.ico">
+      <?php $this->head() ?>
     </head>
-    <?php $this->body() ?>
+    <body>
+      <?php $this->body() ?>
+    </body>
   </html>
 <?php } ?>
 
+<?php $this->head = function () { ?>
+  <?php if (!$this->config['robots']) { ?>
+    <meta name="robots" content="noindex,nofollow">
+  <?php } ?>
+  <meta name="viewport" content="width=device-width">
+  <title><?= $this->h($this->title) ?></title>
+  <base href="<?= $this->sys['url'] ?>">
+  <link rel="stylesheet" type="text/css" href="<?= $this->sys['merged']['all.css'] ?>">
+  <link rel="shortcut icon" href="/.media/favicon.ico">
+<?php } ?>
+
 <?php $this->body = function () { ?>
-  <body>
-    <div>
-      <?php $this->content() ?>
-    </div>
-    <script src="<?= $this->e['sys']['merged']['all.js'] ?>"></script>
-  </body>
+  <div>
+    <?php $this->content() ?>
+  </div>
+  <script src="<?= $this->sys['merged']['all.js'] ?>"></script>
 <?php } ?>

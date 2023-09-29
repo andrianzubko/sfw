@@ -16,7 +16,7 @@ class Index extends \SFW\Controller
         // }}}
         // {{{ template
 
-        $this->sys('Response')->template(self::$e, 'index.php');
+        $this->sys('Response')->template($this, 'index.php');
 
         // }}}
     }
@@ -25,7 +25,7 @@ class Index extends \SFW\Controller
     {
         // {{{ environment
 
-        $this->my('Environment')->get();
+        $this->my('Environment')->set($this);
 
         // }}}
 
