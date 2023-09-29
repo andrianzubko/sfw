@@ -25,7 +25,7 @@ class Sys extends \SFW\Config
 
         $sys['url'] = self::env('APP_URL', $sys['url']);
 
-        $sys['timezone'] = 'Europe/Moscow';
+        $sys['timezone'] = 'UTC';
 
         // }}}
         // {{{ databaser
