@@ -2,7 +2,7 @@
 
 namespace PHPSTORM_META {
     expectedArguments(\SFW\Base::my(0), 0,
-        'Environment',
+        //'SomeMyLazyClass',
     );
 
     override(\SFW\Base::my(0), map([

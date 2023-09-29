@@ -16,19 +16,13 @@ class Index extends \SFW\Controller
         // }}}
         // {{{ template
 
-        $this->sys('Response')->template($this, 'index.php');
+        $this->sys('Response')->template(['phrase' => 'Hello world!'], 'index.php');
 
         // }}}
     }
 
     protected function body(): bool
     {
-        // {{{ environment
-
-        $this->my('Environment')->set($this);
-
-        // }}}
-
         return true;
     }
 }
