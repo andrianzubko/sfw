@@ -9,21 +9,15 @@ class BasicTest extends TestCase
      *
      * @throws ExpectationFailedException
      */
-    public function testClassesInclude(string $dir = APP_DIR . '/src'): void
+    public function testClassesInclude(): void
     {
-        foreach (scandir($dir) as $file) {
-            if ($file === '.' || $file === '..') {
-                continue;
-            }
+        $app = new App\Runner();
 
-            if (is_dir("$dir/$file")) {
-                $this->testClassesInclude("$dir/$file");
-            } elseif (
-                str_ends_with($file, '.php')
+        foreach ($app->sys('Dir')->scan(APP_DIR . '/src', true, true) as $file) {
+            if (is_file($file)
+                && str_ends_with($file, '.php')
             ) {
-                $result = include_once "$dir/$file";
-
-                $this->assertNotFalse($result);
+                $this->assertNotFalse(include_once $file);
             }
         }
     }
@@ -33,25 +27,61 @@ class BasicTest extends TestCase
      *
      * @throws ExpectationFailedException
      */
-    public function testNativeTemplatesSyntax(?string $dir = null): void
+    public function testNativeTemplatesSyntax(): void
     {
-        if (!isset($dir)) {
-            $dir = App\Runner::$config['sys']['templater']['native']['dir'];
-        }
+        $app = new App\Runner();
 
-        foreach (scandir($dir) as $file) {
-            if ($file === '.' || $file === '..') {
-                continue;
-            }
+        $dir = App\Runner::$config['sys']['templater']['native']['dir'];
 
-            if (is_dir("$dir/$file")) {
-                $this->testNativeTemplatesSyntax("$dir/$file");
-            } elseif (
-                str_ends_with($file, '.php')
+        foreach ($app->sys('Dir')->scan($dir, true, true) as $file) {
+            if (is_file($file)
+                && str_ends_with($file, '.php')
             ) {
-                exec("php -l $dir/$file", result_code: $result);
+                exec("php -l $file", result_code: $result);
 
                 $this->assertSame(0, $result);
+            }
+        }
+    }
+
+    /**
+     * Syntax checking at all twig templates.
+     *
+     * @throws ExpectationFailedException
+     */
+    public function testTwigTemplatesSyntax(): void
+    {
+        $app = new App\Runner();
+
+        $dir = App\Runner::$config['sys']['templater']['twig']['dir'];
+
+        $twig = new \Twig\Environment(
+            new \Twig\Loader\FilesystemLoader($dir)
+        );
+
+        foreach ($app->sys('Dir')->scan($dir, true, true) as $file) {
+            if (is_file($file)
+                && str_ends_with($file, '.twig')
+            ) {
+                try {
+                    $twig->parse(
+                        $twig->tokenize(
+                            new \Twig\Source(
+                                $app->sys('File')->get($file), basename($file), $file
+                            )
+                        )
+                    );
+
+                    $this->assertTrue(true);
+                } catch (\Twig\Error\SyntaxError $e) {
+                    $this->fail(
+                        sprintf('%s in %s:%d',
+                            $e->getMessage(),
+                            $e->getFile(),
+                            $e->getLine()
+                        )
+                    );
+                }
             }
         }
     }
@@ -61,21 +91,15 @@ class BasicTest extends TestCase
      *
      * @throws AssertionFailedError
      */
-    public function testXslTemplatesSyntax(?string $dir = null): void
+    public function testXslTemplatesSyntax(): void
     {
-        if (!isset($dir)) {
-            $dir = App\Runner::$config['sys']['templater']['xslt']['dir'];
-        }
+        $app = new App\Runner();
 
-        foreach (scandir($dir) as $file) {
-            if ($file === '.' || $file === '..') {
-                continue;
-            }
+        $dir = App\Runner::$config['sys']['templater']['xslt']['dir'];
 
-            if (is_dir("$dir/$file")) {
-                $this->testXslTemplatesSyntax("$dir/$file");
-            } elseif (
-                str_ends_with($file, '.xsl')
+        foreach ($app->sys('Dir')->scan($dir, true, true) as $file) {
+            if (is_file($file)
+                && str_ends_with($file, '.xsl')
             ) {
                 if (extension_loaded('libxml')
                     && extension_loaded('dom')
@@ -83,17 +107,17 @@ class BasicTest extends TestCase
                 ) {
                     $doc = new DOMDocument();
 
-                    $success = $doc->load("$dir/$file", LIBXML_NOCDATA);
+                    $success = $doc->load($file, LIBXML_NOCDATA);
 
                     $this->assertNotFalse($success);
 
-                    if ($success) {
-                        $processor = new XSLTProcessor();
-
-                        $success = $processor->importStylesheet($doc);
-
-                        $this->assertNotFalse($success);
+                    if (!$success) {
+                        continue;
                     }
+
+                    $success = (new XSLTProcessor())->importStylesheet($doc);
+
+                    $this->assertNotFalse($success);
                 } else {
                     $this->fail('For XSL tests your need extensions: LIBXML, DOM and XSL');
                 }
