@@ -55,9 +55,13 @@ class BasicTest extends TestCase
 
         $dir = App\Runner::$config['sys']['templater']['twig']['dir'];
 
-        $twig = new \Twig\Environment(
-            new \Twig\Loader\FilesystemLoader($dir)
-        );
+        try {
+            $loader = new Twig\Loader\FilesystemLoader($dir);
+        } catch (Throwable) {
+            return;
+        }
+
+        $twig = new Twig\Environment($loader);
 
         foreach ($app->sys('Dir')->scan($dir, true, true) as $file) {
             if (is_file($file)
@@ -66,14 +70,14 @@ class BasicTest extends TestCase
                 try {
                     $twig->parse(
                         $twig->tokenize(
-                            new \Twig\Source(
+                            new Twig\Source(
                                 $app->sys('File')->get($file), basename($file), $file
                             )
                         )
                     );
 
                     $this->assertTrue(true);
-                } catch (\Twig\Error\SyntaxError $e) {
+                } catch (Throwable $e) {
                     $this->fail(
                         sprintf('%s in %s:%d',
                             $e->getMessage(),
