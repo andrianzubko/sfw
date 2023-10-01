@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/.base.html.php' ?>
+<?php require __DIR__ . '/regular.html.php' ?>
 
 <?php $this->title = $this->config['name'] ?>
 

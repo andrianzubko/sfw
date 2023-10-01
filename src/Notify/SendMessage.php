@@ -32,7 +32,7 @@ class SendMessage extends \SFW\Notify
 
         $struct->context['message'] = $this->message;
 
-        $struct->body = $this->sys('Templater')->transform('.message.example.html.php', $struct->context);
+        $struct->body = $this->sys('Templater')->transform('notify.send.message.html.php', $struct->context);
 
         yield $struct;
     }
