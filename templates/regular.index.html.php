@@ -2,6 +2,6 @@
 
 <?php $this->title = $this->config['name'] ?>
 
-<?php $this->content = function () { ?>
+<?php $this->contents = function () { ?>
   <p><?= $this->h($this->context['phrase']) ?></p>
 <?php } ?>

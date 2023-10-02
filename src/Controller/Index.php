@@ -16,7 +16,7 @@ class Index extends \SFW\Controller
         // }}}
         // {{{ template
 
-        $this->sys('Response')->template('regular.index.html.php', $this);
+        $this->sys('Response')->template('regular.index.html', $this);
 
         // }}}
     }

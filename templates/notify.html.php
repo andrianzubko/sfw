@@ -2,15 +2,9 @@
 <?php $this->main = function () { ?>
   <!DOCTYPE html>
   <html>
-    <head>
-      <?php $this->head() ?>
-    </head>
+    <head></head>
     <body>
-      <?php $this->body() ?>
+      <?php $this->contents() ?>
     </body>
   </html>
-<?php } ?>
-
-<?php $this->head = function () { ?>
-
 <?php } ?>

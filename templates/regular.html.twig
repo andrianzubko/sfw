@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% if not config.robots %}
+      <meta name="robots" content="noindex,nofollow">
+    {% endif %}
+    <title>{% block title %}{% endblock %}</title>
+    <base href="{{ sys.url }}">
+    <link rel="stylesheet" type="text/css" href="{{ sys.merged['all.css'] }}">
+    <link rel="shortcut icon" href="/.media/favicon.ico">
+  </head>
+  <body>
+    <div>
+      {% block contents %}{% endblock %}
+    </div>
+    <script src="{{ sys.merged['all.js'] }}"></script>
+  </body>
+</html>

@@ -8,7 +8,7 @@ class Environment extends \SFW\Lazy\My
     {
         // {{{ just for example
 
-        $object->phrase = 'Hello world!';
+        $object->phrase = 'Hello! This is Simplest framework :)';
 
         // }}}
     }
