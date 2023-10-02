@@ -86,9 +86,9 @@ class Sys extends \SFW\Config
         // }}}
         // {{{ merger
 
-        $sys['merger']['sources'][APP_DIR . '/assets/css/*.css'] = ['all.css'];
+        $sys['merger']['sources']['all.css'] = APP_DIR . '/assets/css/*.css';
 
-        $sys['merger']['sources'][APP_DIR . '/assets/js/*.js'] = ['all.js'];
+        $sys['merger']['sources']['all.js'] = APP_DIR . '/assets/js/*.js';
 
         // }}}
         // {{{ paginator
