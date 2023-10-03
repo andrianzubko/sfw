@@ -72,6 +72,16 @@ class Sys extends \SFW\Config
 
         $sys['templater']['default'] = 'Native';
 
+        /* Native
+        */
+        $sys['templater']['native']['minify'] = false;
+
+        /* Twig
+         */
+        $sys['templater']['twig']['minify'] = false;
+
+        $sys['templater']['twig']['strict'] = true;
+
         // }}}
         // {{{ notifier
 
