@@ -32,8 +32,7 @@ class Sys extends \SFW\Config
 
         $sys['db']['default'] = 'Pgsql';
 
-        /**
-         * Pgsql.
+        /* Pgsql.
          */
         $sys['db']['pgsql']['host'] = self::env('APP_PGSQL_HOST', $sys['db']['pgsql']['host']);
 
@@ -47,8 +46,7 @@ class Sys extends \SFW\Config
 
         $sys['db']['pgsql']['persistent'] = self::env('APP_PGSQL_PERSISTENT', $sys['db']['pgsql']['persistent']);
 
-        /**
-         * Mysql.
+        /* Mysql.
          */
         $sys['db']['mysql']['host'] = self::env('APP_MYSQL_HOST', $sys['db']['mysql']['host']);
 
@@ -73,7 +71,7 @@ class Sys extends \SFW\Config
         $sys['templater']['default'] = 'Native';
 
         /* Native
-        */
+         */
         $sys['templater']['native']['minify'] = false;
 
         /* Twig
