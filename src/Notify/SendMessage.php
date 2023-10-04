@@ -18,7 +18,7 @@ class SendMessage extends \SFW\Notify
     /**
      * Builds and yields or returns structures.
      *
-     * This method called after browser disconnect.
+     * This method called after browser disconnect as last shutdown function.
      *
      * @throws \SFW\Exception
      */
@@ -30,9 +30,9 @@ class SendMessage extends \SFW\Notify
 
         $struct->recipients[] = $this->email;
 
-        $struct->context['message'] = $this->message;
-
-        $struct->body = $this->sys('Templater')->transform('notify.send.message.html', $struct->context);
+        $struct->body = $this->sys('Templater')->transform('notify.send.message.html', [
+            'message' => $this->message,
+        ]);
 
         yield $struct;
     }
