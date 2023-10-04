@@ -9,14 +9,12 @@ class Index extends \SFW\Controller
     {
         // {{{ transaction
 
-        $this->sys('Transaction')->run("ISOLATION LEVEL REPEATABLE READ, READ ONLY", null,
-            $this->body(...)
-        );
+        $this->sys('Transaction')->run($this->body(...));
 
         // }}}
         // {{{ response
 
-        $this->sys('Response')->template('regular.index.html', $this);
+        $this->sys('Response')->template('regular.index.html', (array) $this);
 
         // }}}
     }
