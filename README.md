@@ -11,9 +11,9 @@ composer create-project andrianzubko/sfw
 ### Apache/mod_php
 
 ```apacheconf
-DocumentRoot /{SITE_ROOT}/public
+DocumentRoot {SITE_ROOT}/public
 
-<Directory /{SITE_ROOT}/public>
+<Directory {SITE_ROOT}/public>
     FallbackResource /.bin/index.php
 </Directory>
 ```
@@ -21,7 +21,7 @@ DocumentRoot /{SITE_ROOT}/public
 ### Nginx/PHP-FPM
 
 ```nginxconf
-root /{SITE_ROOT}/public;
+root {SITE_ROOT}/public;
 
 location / {
     try_files $uri /.bin/index.php$is_args$args;
