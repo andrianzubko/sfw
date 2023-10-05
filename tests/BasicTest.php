@@ -5,7 +5,7 @@ use PHPUnit\Framework\{TestCase, AssertionFailedError, ExpectationFailedExceptio
 class BasicTest extends TestCase
 {
     /**
-     * Including all classes.
+     * Includes all classes.
      *
      * @throws ExpectationFailedException
      */
@@ -23,7 +23,7 @@ class BasicTest extends TestCase
     }
 
     /**
-     * Syntax checking at all native templates.
+     * Syntax checks at all native templates.
      *
      * @throws ExpectationFailedException
      */
@@ -45,7 +45,7 @@ class BasicTest extends TestCase
     }
 
     /**
-     * Syntax checking at all twig templates.
+     * Syntax checks at all twig templates.
      *
      * @throws ExpectationFailedException
      */
@@ -91,7 +91,7 @@ class BasicTest extends TestCase
     }
 
     /**
-     * Syntax checking at all xsl templates.
+     * Syntax checks at all xsl templates.
      *
      * @throws AssertionFailedError
      */
@@ -130,7 +130,7 @@ class BasicTest extends TestCase
     }
 
     /**
-     * Example of testing site functionality.
+     * Example of site functionality test.
      *
      * @throws ExpectationFailedException
      */

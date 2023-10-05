@@ -9,9 +9,11 @@ class Session extends \SFW\Model
      */
     public function get(string $sid): array|false
     {
-        // This is just example and therefore disabled.
+        /* This is just example and therefore disabled.
+         */
         if (0) {
-            // There is no ORM built-in, only raw SQL.
+            /* There is no ORM built-in, only raw SQL.
+             */
             $result = $this->sys('Db')->query(
                 sprintf("
                     SELECT *
@@ -21,7 +23,8 @@ class Session extends \SFW\Model
                 )
             );
 
-            // At any fetches json fields will be automatically extracted to arrays.
+            /* At any fetches json fields will be automatically extracted to arrays.
+             */
             return $result->fetchAssoc();
         }
 

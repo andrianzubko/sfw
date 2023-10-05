@@ -13,7 +13,6 @@ class SendMessage extends \SFW\Notify
         protected string $email,
         protected string $message
     ) {
-        // Fetch data from database here.
     }
 
     /**
