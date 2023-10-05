@@ -13,6 +13,7 @@ class SendMessage extends \SFW\Notify
         protected string $email,
         protected string $message
     ) {
+        // Fetch data from database here.
     }
 
     /**
@@ -20,7 +21,7 @@ class SendMessage extends \SFW\Notify
      *
      * This method called after browser disconnect as last shutdown function.
      *
-     * @throws \SFW\Exception
+     * @throws \SFW\Templater\Exception
      */
     public function build(\SFW\NotifyStruct $defaultStruct): iterable
     {
