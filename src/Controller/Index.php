@@ -35,7 +35,7 @@ class Index extends \SFW\Controller
         /* Route parameters already placed at $_GET and $_REQUEST arrays.
          */
         if (!preg_match('/^\d{1,10}$/', $_GET['id'])) {
-            $this->sys('Response')->errorPage(404);
+            $this->sys('Response')->error(404);
         }
 
         /* Transaction can be run with needed isolation level and repeats at needed sql states on errors.
@@ -55,7 +55,7 @@ class Index extends \SFW\Controller
                 );
 
                 /* Dirty exit from transactions are supported.
-                 * You can explicitly call $this->sys('Db')->commit() here if needed.
+                 * You can explicitly call $this->sys('Db')->commit() before exit if needed.
                  */
                 if (0) {
                     $this->sys('Response')->json(['error' => 'Wrong id!'])->exit();
