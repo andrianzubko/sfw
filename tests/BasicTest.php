@@ -8,10 +8,13 @@ class BasicTest extends TestCase
      * Includes all classes.
      *
      * @throws ExpectationFailedException
+     * @throws ReflectionException
      */
     public function testClassesInclude(): void
     {
-        foreach (App\Runner::sys('Dir')->scan(APP_DIR . '/src', true, true) as $file) {
+        $rApp = new ReflectionClass('App\Runner');
+
+        foreach ($rApp->getMethod('sys')->invoke(null, 'Dir')->scan(APP_DIR . '/src', true, true) as $file) {
             if (is_file($file)
                 && str_ends_with($file, '.php')
             ) {
@@ -24,12 +27,17 @@ class BasicTest extends TestCase
      * Syntax checks at all native templates.
      *
      * @throws ExpectationFailedException
+     * @throws ReflectionException
      */
     public function testNativeTemplatesSyntax(): void
     {
-        $dir = App\Runner::$config['sys']['templater']['native']['dir'];
+        $rApp = new ReflectionClass('App\Runner');
 
-        foreach (App\Runner::sys('Dir')->scan($dir, true, true) as $file) {
+        $config = $rApp->getProperty('config')->getValue();
+
+        $dir = $config['sys']['templater']['native']['dir'];
+
+        foreach ($rApp->getMethod('sys')->invoke(null, 'Dir')->scan($dir, true, true) as $file) {
             if (is_file($file)
                 && str_ends_with($file, '.php')
             ) {
@@ -44,10 +52,15 @@ class BasicTest extends TestCase
      * Syntax checks at all twig templates.
      *
      * @throws ExpectationFailedException
+     * @throws ReflectionException
      */
     public function testTwigTemplatesSyntax(): void
     {
-        $dir = App\Runner::$config['sys']['templater']['twig']['dir'];
+        $rApp = new ReflectionClass('App\Runner');
+
+        $config = $rApp->getProperty('config')->getValue();
+
+        $dir = $config['sys']['templater']['twig']['dir'];
 
         try {
             $loader = new Twig\Loader\FilesystemLoader($dir);
@@ -57,7 +70,7 @@ class BasicTest extends TestCase
 
         $twig = new Twig\Environment($loader);
 
-        foreach (App\Runner::sys('Dir')->scan($dir, true, true) as $file) {
+        foreach ($rApp->getMethod('sys')->invoke(null, 'Dir')->scan($dir, true, true) as $file) {
             if (is_file($file)
                 && str_ends_with($file, '.twig')
             ) {
@@ -65,7 +78,9 @@ class BasicTest extends TestCase
                     $twig->parse(
                         $twig->tokenize(
                             new Twig\Source(
-                                App\Runner::sys('File')->get($file), basename($file), $file
+                                $rApp->getMethod('sys')->invoke(null, 'File')->get($file),
+                                basename($file),
+                                $file
                             )
                         )
                     );
@@ -88,12 +103,17 @@ class BasicTest extends TestCase
      * Syntax checks at all xsl templates.
      *
      * @throws AssertionFailedError
+     * @throws ReflectionException
      */
     public function testXslTemplatesSyntax(): void
     {
-        $dir = App\Runner::$config['sys']['templater']['xslt']['dir'];
+        $rApp = new ReflectionClass('App\Runner');
 
-        foreach (App\Runner::sys('Dir')->scan($dir, true, true) as $file) {
+        $config = $rApp->getProperty('config')->getValue();
+
+        $dir = $config['sys']['templater']['xslt']['dir'];
+
+        foreach ($rApp->getMethod('sys')->invoke(null, 'Dir')->scan($dir, true, true) as $file) {
             if (is_file($file)
                 && str_ends_with($file, '.xsl')
             ) {
@@ -125,9 +145,16 @@ class BasicTest extends TestCase
      * Example of site functionality test.
      *
      * @throws ExpectationFailedException
+     * @throws ReflectionException
      */
     public function testSome(): void
     {
-        $this->assertSame('', App\Runner::sys('Text')->trim(' '));
+        $rApp = new ReflectionClass('App\Runner');
+
+        $target = new stdClass();
+
+        $rApp->getMethod('my')->invoke(null, 'Environment')->setTo($target);
+
+        $this->assertFalse($target->session);
     }
 }
