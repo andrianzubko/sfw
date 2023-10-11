@@ -11,9 +11,7 @@ class BasicTest extends TestCase
      */
     public function testClassesInclude(): void
     {
-        $app = new App\Runner();
-
-        foreach ($app->sys('Dir')->scan(APP_DIR . '/src', true, true) as $file) {
+        foreach (App\Runner::sys('Dir')->scan(APP_DIR . '/src', true, true) as $file) {
             if (is_file($file)
                 && str_ends_with($file, '.php')
             ) {
@@ -29,11 +27,9 @@ class BasicTest extends TestCase
      */
     public function testNativeTemplatesSyntax(): void
     {
-        $app = new App\Runner();
-
         $dir = App\Runner::$config['sys']['templater']['native']['dir'];
 
-        foreach ($app->sys('Dir')->scan($dir, true, true) as $file) {
+        foreach (App\Runner::sys('Dir')->scan($dir, true, true) as $file) {
             if (is_file($file)
                 && str_ends_with($file, '.php')
             ) {
@@ -51,8 +47,6 @@ class BasicTest extends TestCase
      */
     public function testTwigTemplatesSyntax(): void
     {
-        $app = new App\Runner();
-
         $dir = App\Runner::$config['sys']['templater']['twig']['dir'];
 
         try {
@@ -63,7 +57,7 @@ class BasicTest extends TestCase
 
         $twig = new Twig\Environment($loader);
 
-        foreach ($app->sys('Dir')->scan($dir, true, true) as $file) {
+        foreach (App\Runner::sys('Dir')->scan($dir, true, true) as $file) {
             if (is_file($file)
                 && str_ends_with($file, '.twig')
             ) {
@@ -71,7 +65,7 @@ class BasicTest extends TestCase
                     $twig->parse(
                         $twig->tokenize(
                             new Twig\Source(
-                                $app->sys('File')->get($file), basename($file), $file
+                                App\Runner::sys('File')->get($file), basename($file), $file
                             )
                         )
                     );
@@ -97,11 +91,9 @@ class BasicTest extends TestCase
      */
     public function testXslTemplatesSyntax(): void
     {
-        $app = new App\Runner();
-
         $dir = App\Runner::$config['sys']['templater']['xslt']['dir'];
 
-        foreach ($app->sys('Dir')->scan($dir, true, true) as $file) {
+        foreach (App\Runner::sys('Dir')->scan($dir, true, true) as $file) {
             if (is_file($file)
                 && str_ends_with($file, '.xsl')
             ) {
@@ -136,8 +128,6 @@ class BasicTest extends TestCase
      */
     public function testSome(): void
     {
-        $app = new App\Runner();
-
-        $this->assertSame('', $app->sys('Text')->trim(' '));
+        $this->assertSame('', App\Runner::sys('Text')->trim(' '));
     }
 }
