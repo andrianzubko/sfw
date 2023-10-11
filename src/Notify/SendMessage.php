@@ -30,7 +30,7 @@ class SendMessage extends \SFW\Notify
 
         $struct->recipients[] = $this->email;
 
-        $struct->body = $this->sys('Templater')->transform('notify.send.message.html', [
+        $struct->body = self::sys('Templater')->transform('notify.send.message.html', [
             'message' => $this->message,
         ]);
 

@@ -76,8 +76,6 @@ class Sys extends \SFW\Config
 
         /* Twig
          */
-        $sys['templater']['twig']['minify'] = false;
-
         $sys['templater']['twig']['strict'] = true;
 
         // }}}

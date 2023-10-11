@@ -14,12 +14,12 @@ class Session extends \SFW\Model
         if (0) {
             /* There is no ORM built-in, only raw SQL.
              */
-            $result = $this->sys('Db')->query(
+            $result = self::sys('Db')->query(
                 sprintf("
                     SELECT *
                       FROM sessions
                      WHERE sid = %s",
-                        $this->sys('Db')->string($sid)
+                        self::sys('Db')->string($sid)
                 )
             );
 

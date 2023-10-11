@@ -19,7 +19,7 @@ class Index extends \SFW\Controller
 
         /* There is many ways to response. As example, with template processors: Native, Twig or Xslt.
          */
-        $this->sys('Response')->template('regular.index.html', [
+        self::sys('Response')->template('regular.index.html', [
             'phrase' => $this->phrase,
         ]);
     }
@@ -35,30 +35,30 @@ class Index extends \SFW\Controller
         /* Route parameters already placed at $_GET and $_REQUEST arrays.
          */
         if (!preg_match('/^\d{1,10}$/', $_GET['id'])) {
-            $this->sys('Response')->error(404);
+            self::sys('Response')->error(404);
         }
 
         /* Transaction can be run with needed isolation level and repeats at needed sql states on errors.
          * PgBouncer in transaction pool mode is fully supported (of course only for Pgsql).
          */
-        $this->sys('Transaction')->run(
+        self::sys('Transaction')->run(
             function (): bool {
                 /* It's possible to set results directly to this class properties.
                  */
-                $this->my('Environment')->set($this);
+                self::my('Environment')->setTo($this);
 
                 /* In this place message will be only prepared (fetched some data).
                  * All heavy work will be done after browser disconnect at last shutdown function.
                  */
-                $this->sys('Notifier')->add(
+                self::sys('Notifier')->add(
                     new \App\Notify\SendMessage('your@mail.com', 'Hello!')
                 );
 
                 /* Dirty exit from transactions are supported.
-                 * You can explicitly call $this->sys('Db')->commit() before exit if needed.
+                 * You can explicitly call self::sys('Db')->commit() before exit if needed.
                  */
                 if (0) {
-                    $this->sys('Response')->json(['error' => 'Wrong id!'])->exit();
+                    self::sys('Response')->json(['error' => 'Wrong id!'])->exit();
                 }
 
                 /* That's mean commit.
@@ -71,12 +71,12 @@ class Index extends \SFW\Controller
          * Routes matched by the number of parameters, and you can pass null to leave as-is.
          */
         $this->phrase = sprintf('You are here: %s',
-            $this->sys('Router')->genAbsoluteUrl('Index::test', $_GET['id'])
+            self::sys('Router')->genAbsoluteUrl('Index::test', $_GET['id'])
         );
 
         /* It's possible to pass all public(!) properties directly to template processor.
          */
-        $this->sys('Response')->template('regular.index.html', $this);
+        self::sys('Response')->template('regular.index.html', $this);
 
         /* Connection with browser will be aborted immediately after any response.
          * This sleep command will run in the background.

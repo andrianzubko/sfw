@@ -10,7 +10,7 @@ class Environment extends \SFW\Lazy\My
     /**
      * @throws \SFW\Databaser\Exception
      */
-    public function set(object $object): void
+    public function setTo(object $object): void
     {
         if (isset($_COOKIE['SID'])
             && is_string($_COOKIE['SID'])

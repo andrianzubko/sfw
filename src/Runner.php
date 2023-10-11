@@ -8,9 +8,9 @@ namespace App;
 class Runner extends \SFW\Runner
 {
     /**
-     * Initializes additional environment.
+     * Initializes your environment (self::$my).
      */
-    protected function additionalEnvironment(): void
+    protected function myEnvironment(): void
     {
     }
 }
