@@ -8,9 +8,12 @@ namespace App;
 class Runner extends \SFW\Runner
 {
     /**
-     * Initializes your environment (self::$my).
+     * Initializes your environment.
      */
     protected function myEnvironment(): void
     {
+        /* Put to self::$my anything you need.
+         * Check PHP_SELF for cli for puts different environments.
+         */
     }
 }

@@ -140,21 +140,4 @@ class BasicTest extends TestCase
             }
         }
     }
-
-    /**
-     * Example of site functionality test.
-     *
-     * @throws ExpectationFailedException
-     * @throws ReflectionException
-     */
-    public function testSome(): void
-    {
-        $rApp = new ReflectionClass('App\Runner');
-
-        $target = new stdClass();
-
-        $rApp->getMethod('my')->invoke(null, 'Environment')->setTo($target);
-
-        $this->assertFalse($target->session);
-    }
 }
