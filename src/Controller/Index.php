@@ -36,9 +36,7 @@ class Index extends \App\Controller
     {
         /* Route parameters already placed at $_GET and $_REQUEST arrays.
          */
-        $this->id = filter_var($_GET['id'], FILTER_VALIDATE_INT, ['min_range' => 1]);
-
-        if ($this->id === false) {
+        if (!preg_match('/^\d{1,10}$/', $_GET['id'])) {
             self::sys('Response')->error(404);
         }
 
@@ -80,7 +78,7 @@ class Index extends \App\Controller
          *
          * Routes matched by the number of parameters, and you can pass null to leave as-is.
          */
-        $this->phrase = 'You are here: ' . self::sys('Router')->genAbsoluteUrl('Index::test', $this->id);
+        $this->phrase = 'You are here: ' . self::sys('Router')->genAbsoluteUrl('Index::test', $_GET['id']);
 
         /* It's possible to pass all public(!) properties directly to template processor.
          *
