@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class Session extends \SFW\Model
+class Session extends \App\Model
 {
     /**
      * @throws \SFW\Databaser\Exception

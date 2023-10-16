@@ -5,7 +5,7 @@ namespace App;
 /**
  * Simplest framework runner.
  */
-class Runner extends \SFW\Runner
+final class Runner extends \SFW\Runner
 {
     /**
      * Initializes your environment.
@@ -13,7 +13,8 @@ class Runner extends \SFW\Runner
     protected function myEnvironment(): void
     {
         /* Put to self::$my anything you need.
-         * Check PHP_SELF for cli for puts different environments.
+         *
+         * Check PHP_SELF for cli for different environments' initialization.
          */
     }
 }

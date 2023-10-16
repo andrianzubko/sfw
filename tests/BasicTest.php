@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\{TestCase, AssertionFailedError, ExpectationFailedException};
+use PHPUnit\Framework\{AssertionFailedError, ExpectationFailedException, TestCase};
 
 class BasicTest extends TestCase
 {

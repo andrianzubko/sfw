@@ -2,7 +2,7 @@
 
 namespace App\Notify;
 
-class SendMessage extends \SFW\Notify
+class SendMessage extends \App\Notify
 {
     /**
      * Fetches data from database or just prepares your notify.
