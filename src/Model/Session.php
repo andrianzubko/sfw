@@ -5,7 +5,7 @@ namespace App\Model;
 class Session extends \App\Model
 {
     /**
-     * @throws \SFW\Databaser\Exception
+     * @throws \SFW\Exception
      */
     public function get(string $sid): array|false
     {

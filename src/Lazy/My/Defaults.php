@@ -2,22 +2,24 @@
 
 namespace App\Lazy\My;
 
+use App\Model;
+
 /**
  * Lazy classes can be used as standalone classes or as glue between anything.
  */
-class Environment extends \SFW\Lazy\My
+class Defaults extends \SFW\Lazy\My
 {
     /**
-     * @throws \SFW\Databaser\Exception
+     * @throws \SFW\Exception
      */
-    public function setTo(object $object): void
+    public function init(object $object): void
     {
         if (isset($_COOKIE['SID'])
             && is_string($_COOKIE['SID'])
         ) {
             /* Passing results directly to caller object is very useful.
              */
-            $object->session = (new \App\Model\Session())->get($_COOKIE['SID']);
+            $object->session = (new Model\Session())->get($_COOKIE['SID']);
         } else {
             $object->session = false;
         }

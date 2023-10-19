@@ -48,7 +48,7 @@ class Index extends \App\Controller
             function (): bool {
                 /* It's possible to set results directly to this class properties.
                  */
-                self::my('Environment')->setTo($this);
+                self::my('Defaults')->init($this);
 
                 /* In this place message will be only prepared (fetched some data).
                  *
