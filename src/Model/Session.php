@@ -23,7 +23,7 @@ class Session extends \App\Model
                 )
             );
 
-            /* At any fetches value types (int, float, bool json) will be converted to native PHP types.
+            /* At any fetches value types (int, float, bool, json) will be converted to native PHP types.
              */
             return $result->fetchAssoc();
         }
