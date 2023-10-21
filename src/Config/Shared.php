@@ -3,18 +3,18 @@
 namespace App\Config;
 
 /**
- * Your config (available from everywhere).
+ * Your configuration (available from everywhere).
  */
 class Shared extends \SFW\Config
 {
     /**
-     * Returns array with config parameters.
+     * Returns array with configuration parameters.
      */
     public static function get(): array
     {
         $shared = [];
 
-        // {{{ your shared config
+        // {{{ your shared configuration
 
         /* Allow robots.
          *
