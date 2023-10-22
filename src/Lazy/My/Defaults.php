@@ -14,9 +14,7 @@ class Defaults extends \SFW\Lazy\My
      */
     public function init(object $object): void
     {
-        if (isset($_COOKIE['SID'])
-            && is_string($_COOKIE['SID'])
-        ) {
+        if (isset($_COOKIE['SID']) && \is_string($_COOKIE['SID'])) {
             /* Passing results directly to caller object is very useful.
              */
             $object->session = (new Model\Session())->get($_COOKIE['SID']);
