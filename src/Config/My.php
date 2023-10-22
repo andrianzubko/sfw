@@ -14,7 +14,7 @@ class My extends \SFW\Config
     {
         $my = [];
 
-        // {{{ your configuration
+        // {{{ general
 
         // }}}
 

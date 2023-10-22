@@ -14,7 +14,7 @@ class Shared extends \SFW\Config
     {
         $shared = [];
 
-        // {{{ your shared configuration
+        // {{{ general
 
         /* Allow robots.
          *
