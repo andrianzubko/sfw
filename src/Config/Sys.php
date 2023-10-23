@@ -3,20 +3,26 @@
 namespace App\Config;
 
 /**
- * System configuration (not available from templates).
- *
- * Only override needed parameters from basic system configuration.
- * Don't add here your own new parameters!
+ * System configuration overrides.
  */
-class Sys extends \SFW\Config
+class Sys extends \SFW\Config\Sys
 {
     /**
-     * Returns array with configuration parameters.
+     * If you need some of these parameters to be available in templates, list them in 'shared' parameter.
      */
-    public static function get(): array
+    public static function init(): array
     {
-        $sys = \SFW\Config\Sys::get();
+        $sys = self::defaults();
 
+        // {{{ access control
+
+        /* List of parameter names that will be available in templates.
+         *
+         * array
+         */
+        $sys['shared'] = ['env','debug'];
+
+        // }}}
         // {{{ general
 
         $sys['env'] = self::env('APP_ENV', $sys['env']);

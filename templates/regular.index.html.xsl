@@ -5,7 +5,7 @@
   <xsl:import href="regular.html.xsl" />
 
   <xsl:template match="/root" mode="title">
-    <xsl:value-of select="config/name" />
+    <xsl:value-of select="my/config/name" />
   </xsl:template>
 
   <xsl:template match="/root" mode="contents">

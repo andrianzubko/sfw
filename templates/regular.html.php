@@ -5,7 +5,7 @@
   <!DOCTYPE html>
   <html>
     <head>
-      <?php if (!$this->config['robots']) { ?>
+      <?php if (!$this->my['config']['robots']) { ?>
         <meta name="robots" content="noindex,nofollow">
       <?php } ?>
       <title><?= $this->h($this->title) ?></title>

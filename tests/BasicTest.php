@@ -33,9 +33,7 @@ class BasicTest extends TestCase
     {
         $rApp = new ReflectionClass('App\Runner');
 
-        $config = $rApp->getProperty('config')->getValue();
-
-        $dir = $config['sys']['templater_native_dir'];
+        $dir = $rApp->getProperty('sys')->getValue()['config']['templater_native_dir'];
 
         foreach ($rApp->getMethod('sys')->invoke(null, 'Dir')->scan($dir, true, true) as $file) {
             if (is_file($file)
@@ -58,9 +56,7 @@ class BasicTest extends TestCase
     {
         $rApp = new ReflectionClass('App\Runner');
 
-        $config = $rApp->getProperty('config')->getValue();
-
-        $dir = $config['sys']['templater_twig_dir'];
+        $dir = $rApp->getProperty('sys')->getValue()['config']['templater_twig_dir'];
 
         try {
             $loader = new Twig\Loader\FilesystemLoader($dir);
@@ -109,9 +105,7 @@ class BasicTest extends TestCase
     {
         $rApp = new ReflectionClass('App\Runner');
 
-        $config = $rApp->getProperty('config')->getValue();
-
-        $dir = $config['sys']['templater_xslt_dir'];
+        $dir = $rApp->getProperty('sys')->getValue()['config']['templater_xslt_dir'];
 
         foreach ($rApp->getMethod('sys')->invoke(null, 'Dir')->scan($dir, true, true) as $file) {
             if (is_file($file)

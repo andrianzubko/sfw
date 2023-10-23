@@ -3,18 +3,39 @@
 namespace App\Config;
 
 /**
- * Your configuration (not available from templates).
+ * Your configuration.
  */
-class My extends \SFW\Config
+class My extends \SFW\Config\My
 {
     /**
-     * Returns array with configuration parameters.
+     * If you need some of these parameters to be available in templates, list them in 'shared' parameter.
      */
-    public static function get(): array
+    public static function init(): array
     {
         $my = [];
 
+        // {{{ access control
+
+        /* List of parameter names that will be available in templates.
+         *
+         * array
+         */
+        $my['shared'] = ['robots','name'];
+
+        // }}}
         // {{{ general
+
+        /* Allow robots.
+         *
+         * bool
+         */
+        $my['robots'] = self::env('APP_ROBOTS', false);
+
+        /* Application name.
+         *
+         * string
+         */
+        $my['name'] = 'Simplest framework';
 
         // }}}
 

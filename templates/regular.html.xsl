@@ -13,7 +13,7 @@
   <xsl:template match="/root">
     <html>
       <head>
-        <xsl:if test="not(config/robots = 1)">
+        <xsl:if test="not(my/config/robots = 1)">
           <meta name="robots" content="noindex,nofollow" />
         </xsl:if>
         <title>
