@@ -12,7 +12,7 @@ class Sys extends \SFW\Config\Sys
      */
     public static function init(): array
     {
-        $sys = self::defaults();
+        $config = self::defaults();
 
         // {{{ access control
 
@@ -20,95 +20,95 @@ class Sys extends \SFW\Config\Sys
          *
          * array
          */
-        $sys['shared'] = ['env','debug'];
+        $config['shared'] = ['env','debug'];
 
         // }}}
         // {{{ general
 
-        $sys['env'] = self::env('APP_ENV', $sys['env']);
+        $config['env'] = self::env('APP_ENV', $config['env']);
 
-        $sys['debug'] = self::env('APP_DEBUG', $sys['debug']);
+        $config['debug'] = self::env('APP_DEBUG', $config['debug']);
 
-        $sys['url'] = self::env('APP_URL', $sys['url']);
+        $config['url'] = self::env('APP_URL', $config['url']);
 
-        $sys['timezone'] = 'UTC';
+        $config['timezone'] = 'UTC';
 
         // }}}
         // {{{ databaser
 
-        $sys['db_default'] = 'Pgsql';
+        $config['db_default'] = 'Pgsql';
 
         /* Pgsql.
          */
-        $sys['db_pgsql_host'] = self::env('APP_PGSQL_HOST', $sys['db_pgsql_host']);
+        $config['db_pgsql_host'] = self::env('APP_PGSQL_HOST', $config['db_pgsql_host']);
 
-        $sys['db_pgsql_port'] = self::env('APP_PGSQL_PORT', $sys['db_pgsql_port']);
+        $config['db_pgsql_port'] = self::env('APP_PGSQL_PORT', $config['db_pgsql_port']);
 
-        $sys['db_pgsql_db'] = self::env('APP_PGSQL_DB', $sys['db_pgsql_db']);
+        $config['db_pgsql_db'] = self::env('APP_PGSQL_DB', $config['db_pgsql_db']);
 
-        $sys['db_pgsql_user'] = self::env('APP_PGSQL_USER', $sys['db_pgsql_user']);
+        $config['db_pgsql_user'] = self::env('APP_PGSQL_USER', $config['db_pgsql_user']);
 
-        $sys['db_pgsql_pass'] = self::env('APP_PGSQL_PASS', $sys['db_pgsql_pass']);
+        $config['db_pgsql_pass'] = self::env('APP_PGSQL_PASS', $config['db_pgsql_pass']);
 
-        $sys['db_pgsql_persistent'] = self::env('APP_PGSQL_PERSISTENT', $sys['db_pgsql_persistent']);
+        $config['db_pgsql_persistent'] = self::env('APP_PGSQL_PERSISTENT', $config['db_pgsql_persistent']);
 
         /* Mysql.
          */
-        $sys['db_mysql_host'] = self::env('APP_MYSQL_HOST', $sys['db_mysql_host']);
+        $config['db_mysql_host'] = self::env('APP_MYSQL_HOST', $config['db_mysql_host']);
 
-        $sys['db_mysql_port'] = self::env('APP_MYSQL_PORT', $sys['db_mysql_port']);
+        $config['db_mysql_port'] = self::env('APP_MYSQL_PORT', $config['db_mysql_port']);
 
-        $sys['db_mysql_db'] = self::env('APP_MYSQL_DB', $sys['db_mysql_db']);
+        $config['db_mysql_db'] = self::env('APP_MYSQL_DB', $config['db_mysql_db']);
 
-        $sys['db_mysql_user'] = self::env('APP_MYSQL_USER', $sys['db_mysql_user']);
+        $config['db_mysql_user'] = self::env('APP_MYSQL_USER', $config['db_mysql_user']);
 
-        $sys['db_mysql_pass'] = self::env('APP_MYSQL_PASS', $sys['db_mysql_pass']);
+        $config['db_mysql_pass'] = self::env('APP_MYSQL_PASS', $config['db_mysql_pass']);
 
-        $sys['db_mysql_persistent'] = self::env('APP_MYSQL_PERSISTENT', $sys['db_mysql_persistent']);
+        $config['db_mysql_persistent'] = self::env('APP_MYSQL_PERSISTENT', $config['db_mysql_persistent']);
 
         // }}}
         // {{{ cacher
 
-        $sys['cacher_default'] = self::env('APP_CACHER', $sys['cacher_default']);
+        $config['cacher_default'] = self::env('APP_CACHER', $config['cacher_default']);
 
         // }}}
         // {{{ templater
 
-        $sys['templater_default'] = 'Native';
+        $config['templater_default'] = 'Native';
 
         /* Native
          */
-        $sys['templater_native_minify'] = false;
+        $config['templater_native_minify'] = false;
 
         /* Twig
          */
-        $sys['templater_twig_strict'] = true;
+        $config['templater_twig_strict'] = true;
 
         // }}}
         // {{{ notifier
 
-        $sys['notifier_enabled'] = self::env('APP_NOTIFIER', $sys['notifier_enabled']);
+        $config['notifier_enabled'] = self::env('APP_NOTIFIER', $config['notifier_enabled']);
 
-        $sys['notifier_recipients'] = self::env('APP_NOTIFIER_RECIPIENTS', $sys['notifier_recipients']);
+        $config['notifier_recipients'] = self::env('APP_NOTIFIER_RECIPIENTS', $config['notifier_recipients']);
 
-        $sys['notifier_sender'] = self::env('APP_NOTIFIER_SENDER', $sys['notifier_sender']);
+        $config['notifier_sender'] = self::env('APP_NOTIFIER_SENDER', $config['notifier_sender']);
 
-        $sys['notifier_replies'] = self::env('APP_NOTIFIER_REPLIES', $sys['notifier_replies']);
+        $config['notifier_replies'] = self::env('APP_NOTIFIER_REPLIES', $config['notifier_replies']);
 
         // }}}
         // {{{ merger
 
-        $sys['merger_sources']['all.css'] = APP_DIR . '/assets/css/*.css';
+        $config['merger_sources']['all.css'] = APP_DIR . '/assets/css/*.css';
 
-        $sys['merger_sources']['all.js'] = APP_DIR . '/assets/js/*.js';
+        $config['merger_sources']['all.js'] = APP_DIR . '/assets/js/*.js';
 
         // }}}
         // {{{ paginator
 
-        $sys['paginator_param'] = 'page';
+        $config['paginator_param'] = 'page';
 
         // }}}
 
-        return $sys;
+        return $config;
     }
 }

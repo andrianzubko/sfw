@@ -12,7 +12,7 @@ class My extends \SFW\Config\My
      */
     public static function init(): array
     {
-        $my = [];
+        $config = [];
 
         // {{{ access control
 
@@ -20,7 +20,7 @@ class My extends \SFW\Config\My
          *
          * array
          */
-        $my['shared'] = ['robots','name'];
+        $config['shared'] = ['robots','name'];
 
         // }}}
         // {{{ general
@@ -29,16 +29,16 @@ class My extends \SFW\Config\My
          *
          * bool
          */
-        $my['robots'] = self::env('APP_ROBOTS', false);
+        $config['robots'] = self::env('APP_ROBOTS', false);
 
         /* Application name.
          *
          * string
          */
-        $my['name'] = 'Simplest framework';
+        $config['name'] = 'Simplest framework';
 
         // }}}
 
-        return $my;
+        return $config;
     }
 }
