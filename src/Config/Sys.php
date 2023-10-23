@@ -3,7 +3,7 @@
 namespace App\Config;
 
 /**
- * System configuration overrides.
+ * System configuration with overrides.
  */
 class Sys extends \SFW\Config\Sys
 {
@@ -36,45 +36,45 @@ class Sys extends \SFW\Config\Sys
         // }}}
         // {{{ databaser
 
-        $config['db_default'] = 'Pgsql';
+        $config['db'] = 'Pgsql';
 
         /* Pgsql.
          */
-        $config['db_pgsql_host'] = self::env('APP_PGSQL_HOST', $config['db_pgsql_host']);
+        $config['db_pgsql_host'] = self::env('APP_DB_PGSQL_HOST', $config['db_pgsql_host']);
 
-        $config['db_pgsql_port'] = self::env('APP_PGSQL_PORT', $config['db_pgsql_port']);
+        $config['db_pgsql_port'] = self::env('APP_DB_PGSQL_PORT', $config['db_pgsql_port']);
 
-        $config['db_pgsql_db'] = self::env('APP_PGSQL_DB', $config['db_pgsql_db']);
+        $config['db_pgsql_db'] = self::env('APP_DB_PGSQL_DB', $config['db_pgsql_db']);
 
-        $config['db_pgsql_user'] = self::env('APP_PGSQL_USER', $config['db_pgsql_user']);
+        $config['db_pgsql_user'] = self::env('APP_DB_PGSQL_USER', $config['db_pgsql_user']);
 
-        $config['db_pgsql_pass'] = self::env('APP_PGSQL_PASS', $config['db_pgsql_pass']);
+        $config['db_pgsql_pass'] = self::env('APP_DB_PGSQL_PASS', $config['db_pgsql_pass']);
 
-        $config['db_pgsql_persistent'] = self::env('APP_PGSQL_PERSISTENT', $config['db_pgsql_persistent']);
+        $config['db_pgsql_persistent'] = self::env('APP_DB_PGSQL_PERSISTENT', $config['db_pgsql_persistent']);
 
         /* Mysql.
          */
-        $config['db_mysql_host'] = self::env('APP_MYSQL_HOST', $config['db_mysql_host']);
+        $config['db_mysql_host'] = self::env('APP_DB_MYSQL_HOST', $config['db_mysql_host']);
 
-        $config['db_mysql_port'] = self::env('APP_MYSQL_PORT', $config['db_mysql_port']);
+        $config['db_mysql_port'] = self::env('APP_DB_MYSQL_PORT', $config['db_mysql_port']);
 
-        $config['db_mysql_db'] = self::env('APP_MYSQL_DB', $config['db_mysql_db']);
+        $config['db_mysql_db'] = self::env('APP_DB_MYSQL_DB', $config['db_mysql_db']);
 
-        $config['db_mysql_user'] = self::env('APP_MYSQL_USER', $config['db_mysql_user']);
+        $config['db_mysql_user'] = self::env('APP_DB_MYSQL_USER', $config['db_mysql_user']);
 
-        $config['db_mysql_pass'] = self::env('APP_MYSQL_PASS', $config['db_mysql_pass']);
+        $config['db_mysql_pass'] = self::env('APP_DB_MYSQL_PASS', $config['db_mysql_pass']);
 
-        $config['db_mysql_persistent'] = self::env('APP_MYSQL_PERSISTENT', $config['db_mysql_persistent']);
+        $config['db_mysql_persistent'] = self::env('APP_DB_MYSQL_PERSISTENT', $config['db_mysql_persistent']);
 
         // }}}
         // {{{ cacher
 
-        $config['cacher_default'] = self::env('APP_CACHER', $config['cacher_default']);
+        $config['cacher'] = self::env('APP_CACHER', $config['cacher']);
 
         // }}}
         // {{{ templater
 
-        $config['templater_default'] = 'Native';
+        $config['templater'] = 'Native';
 
         /* Native
          */
