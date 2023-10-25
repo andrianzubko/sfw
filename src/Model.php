@@ -2,6 +2,6 @@
 
 namespace App;
 
-abstract class Model extends \SFW\Model
+abstract class Model extends \SFW\Base
 {
 }

@@ -2,6 +2,6 @@
 
 namespace App;
 
-abstract class Listener extends \SFW\Listener
+abstract class Listener extends \SFW\Base
 {
 }
