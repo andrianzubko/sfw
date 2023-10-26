@@ -10,11 +10,9 @@ final class Runner extends \SFW\Runner
     /**
      * Initializes your environment.
      */
-    protected function myEnvironment(): void
+    protected function environment(): void
     {
-        /* Put to self::$my anything you need.
-         *
-         * Check PHP_SELF for cli for different environments' initialization.
+        /* Put to self::$my anything you need (check PHP_SELF for cli if needed).
          */
     }
 }
