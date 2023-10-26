@@ -29,4 +29,6 @@ return [
     'APP_NOTIFIER_RECIPIENTS' => null,
     'APP_NOTIFIER_SENDER' => 'sender@domain.com',
     'APP_NOTIFIER_REPLIES' => [],
+
+    ...$_SERVER
 ];
