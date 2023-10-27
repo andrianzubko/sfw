@@ -10,7 +10,7 @@ use App\Model;
 class Defaults extends \SFW\Lazy\My
 {
     /**
-     * @throws \SFW\Databaser\Exception
+     * @throws \SFW\Exception
      */
     public function init(object $object): void
     {
