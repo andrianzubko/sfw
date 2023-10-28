@@ -89,9 +89,9 @@ class Sys extends \SFW\Config\Sys
 
         $config['mailer'] = self::env('APP_MAILER', $config['mailer']);
 
-        $config['mailer_recipients'] = self::env('APP_MAILER_RECIPIENTS', $config['mailer_recipients']);
-
         $config['mailer_sender'] = self::env('APP_MAILER_SENDER', $config['mailer_sender']);
+
+        $config['mailer_recipients'] = self::env('APP_MAILER_RECIPIENTS', $config['mailer_recipients']);
 
         $config['mailer_replies'] = self::env('APP_MAILER_REPLIES', $config['mailer_replies']);
 
