@@ -85,15 +85,15 @@ class Sys extends \SFW\Config\Sys
         $config['templater_twig_strict'] = true;
 
         // }}}
-        // {{{ notifier
+        // {{{ mailer
 
-        $config['notifier_enabled'] = self::env('APP_NOTIFIER', $config['notifier_enabled']);
+        $config['mailer'] = self::env('APP_MAILER', $config['mailer']);
 
-        $config['notifier_recipients'] = self::env('APP_NOTIFIER_RECIPIENTS', $config['notifier_recipients']);
+        $config['mailer_recipients'] = self::env('APP_MAILER_RECIPIENTS', $config['mailer_recipients']);
 
-        $config['notifier_sender'] = self::env('APP_NOTIFIER_SENDER', $config['notifier_sender']);
+        $config['mailer_sender'] = self::env('APP_MAILER_SENDER', $config['mailer_sender']);
 
-        $config['notifier_replies'] = self::env('APP_NOTIFIER_REPLIES', $config['notifier_replies']);
+        $config['mailer_replies'] = self::env('APP_MAILER_REPLIES', $config['mailer_replies']);
 
         // }}}
         // {{{ merger

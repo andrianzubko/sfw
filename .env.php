@@ -25,10 +25,10 @@ return [
 
     'APP_CACHER' => 'Apc',
 
-    'APP_NOTIFIER' => true,
-    'APP_NOTIFIER_RECIPIENTS' => null,
-    'APP_NOTIFIER_SENDER' => 'sender@domain.com',
-    'APP_NOTIFIER_REPLIES' => null,
+    'APP_MAILER' => true,
+    'APP_MAILER_SENDER' => 'sender@domain.com',
+    'APP_MAILER_RECIPIENTS' => null,
+    'APP_MAILER_REPLIES' => null,
 
     ...$_SERVER
 ];

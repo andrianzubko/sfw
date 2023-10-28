@@ -56,7 +56,7 @@ class Index extends \App\Controller
                  */
                 if (0) {
                     self::sys('Notifier')->add(
-                        new \App\Notify\SendMessage('your@mail.com', 'Hello!')
+                        new \App\Notify\SimpleMessage('your@mail.com', 'Hello!')
                     );
                 }
 
