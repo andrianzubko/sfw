@@ -9,8 +9,6 @@ class Session extends \App\Model
      */
     public function get(string $sid): array|false
     {
-        /* This is just example and therefore disabled.
-         */
         if (0) {
             /* There is no ORM built-in, only raw SQL.
              */
@@ -23,7 +21,8 @@ class Session extends \App\Model
                 )
             );
 
-            /* At any fetches value types (int, float, bool, json) will be converted to native PHP types.
+            /* At any fetches value types (int, float, bool, json, null) will be converted
+             * from strings to native PHP types.
              */
             return $result->fetchAssoc();
         }
