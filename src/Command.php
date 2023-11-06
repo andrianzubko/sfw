@@ -2,6 +2,6 @@
 
 namespace App;
 
-abstract class Command extends \SFW\Command
+abstract class Command extends \SFW\Base
 {
 }

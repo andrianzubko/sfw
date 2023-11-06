@@ -15,9 +15,7 @@ class BasicTest extends TestCase
         $rApp = new ReflectionClass('App\Runner');
 
         foreach ($rApp->getMethod('sys')->invoke(null, 'Dir')->scan(APP_DIR . '/src', true, true) as $file) {
-            if (is_file($file)
-                && str_ends_with($file, '.php')
-            ) {
+            if (is_file($file) && str_ends_with($file, '.php')) {
                 $this->assertNotFalse(include_once $file);
             }
         }
@@ -36,9 +34,7 @@ class BasicTest extends TestCase
         $dir = $rApp->getStaticPropertyValue('sys')['config']['templater_native_dir'];
 
         foreach ($rApp->getMethod('sys')->invoke(null, 'Dir')->scan($dir, true, true) as $file) {
-            if (is_file($file)
-                && str_ends_with($file, '.php')
-            ) {
+            if (is_file($file) && str_ends_with($file, '.php')) {
                 exec("php -l $file", result_code: $result);
 
                 $this->assertSame(0, $result);
@@ -67,9 +63,7 @@ class BasicTest extends TestCase
         $twig = new Twig\Environment($loader);
 
         foreach ($rApp->getMethod('sys')->invoke(null, 'Dir')->scan($dir, true, true) as $file) {
-            if (is_file($file)
-                && str_ends_with($file, '.twig')
-            ) {
+            if (is_file($file) && str_ends_with($file, '.twig')) {
                 try {
                     $twig->parse(
                         $twig->tokenize(
@@ -108,9 +102,7 @@ class BasicTest extends TestCase
         $dir = $rApp->getStaticPropertyValue('sys')['config']['templater_xslt_dir'];
 
         foreach ($rApp->getMethod('sys')->invoke(null, 'Dir')->scan($dir, true, true) as $file) {
-            if (is_file($file)
-                && str_ends_with($file, '.xsl')
-            ) {
+            if (is_file($file) && str_ends_with($file, '.xsl')) {
                 if (extension_loaded('libxml')
                     && extension_loaded('dom')
                     && extension_loaded('xsl')

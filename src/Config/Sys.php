@@ -34,7 +34,7 @@ class Sys extends \SFW\Config\Sys
         $config['timezone'] = 'UTC';
 
         // }}}
-        // {{{ databaser
+        // {{{ db
 
         $config['db'] = 'Pgsql';
 

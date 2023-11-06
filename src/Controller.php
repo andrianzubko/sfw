@@ -2,6 +2,6 @@
 
 namespace App;
 
-abstract class Controller extends \SFW\Controller
+abstract class Controller extends \SFW\Base
 {
 }
