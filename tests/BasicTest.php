@@ -70,20 +70,14 @@ class BasicTest extends TestCase
                             new Twig\Source(
                                 $rApp->getMethod('sys')->invoke(null, 'File')->get($file),
                                 basename($file),
-                                $file
+                                $file,
                             )
                         )
                     );
 
                     $this->assertTrue(true);
                 } catch (Throwable $e) {
-                    $this->fail(
-                        sprintf('%s in %s:%d',
-                            $e->getMessage(),
-                            $e->getFile(),
-                            $e->getLine()
-                        )
-                    );
+                    $this->fail(sprintf('%s in %s:%d', $e->getMessage(), $e->getFile(), $e->getLine()));
                 }
             }
         }

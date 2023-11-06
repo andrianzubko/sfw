@@ -17,7 +17,7 @@ class Session extends \App\Model
                     SELECT *
                       FROM sessions
                      WHERE sid = %s",
-                    self::sys('Db')->string($sid)
+                    self::sys('Db')->string($sid),
                 )
             );
 

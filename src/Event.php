@@ -2,6 +2,4 @@
 
 namespace App;
 
-abstract class Event extends \SFW\Event
-{
-}
+abstract class Event extends \SFW\Event {}

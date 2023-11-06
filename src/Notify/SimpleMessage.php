@@ -9,9 +9,8 @@ class SimpleMessage extends \App\Notify
      */
     public function __construct(
         protected string $email,
-        protected string $message
-    ) {
-    }
+        protected string $message,
+    ) {}
 
     /**
      * This method will be called after browser disconnect as last shutdown function.
