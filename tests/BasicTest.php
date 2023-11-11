@@ -15,9 +15,13 @@ class BasicTest extends TestCase
         $rApp = new ReflectionClass('App\Runner');
 
         foreach ($rApp->getMethod('sys')->invoke(null, 'Dir')->scan(APP_DIR . '/src', true, true) as $file) {
-            if (is_file($file) && str_ends_with($file, '.php')) {
-                $this->assertNotFalse(include_once $file);
+            if (!is_file($file)
+                || !str_ends_with($file, '.php')
+            ) {
+                continue;
             }
+
+            $this->assertNotFalse(include_once $file);
         }
     }
 
@@ -34,11 +38,15 @@ class BasicTest extends TestCase
         $dir = $rApp->getStaticPropertyValue('sys')['config']['templater_native_dir'];
 
         foreach ($rApp->getMethod('sys')->invoke(null, 'Dir')->scan($dir, true, true) as $file) {
-            if (is_file($file) && str_ends_with($file, '.php')) {
-                exec("php -l $file", result_code: $result);
-
-                $this->assertSame(0, $result);
+            if (!is_file($file)
+                || !str_ends_with($file, '.php')
+            ) {
+                continue;
             }
+
+            exec("php -l $file", result_code: $result);
+
+            $this->assertSame(0, $result);
         }
     }
 
@@ -63,22 +71,26 @@ class BasicTest extends TestCase
         $twig = new Twig\Environment($loader);
 
         foreach ($rApp->getMethod('sys')->invoke(null, 'Dir')->scan($dir, true, true) as $file) {
-            if (is_file($file) && str_ends_with($file, '.twig')) {
-                try {
-                    $twig->parse(
-                        $twig->tokenize(
-                            new Twig\Source(
-                                $rApp->getMethod('sys')->invoke(null, 'File')->get($file),
-                                basename($file),
-                                $file,
-                            )
-                        )
-                    );
+            if (!is_file($file)
+                || !str_ends_with($file, '.twig')
+            ) {
+                continue;
+            }
 
-                    $this->assertTrue(true);
-                } catch (Throwable $e) {
-                    $this->fail(sprintf('%s in %s:%d', $e->getMessage(), $e->getFile(), $e->getLine()));
-                }
+            try {
+                $twig->parse(
+                    $twig->tokenize(
+                        new Twig\Source(
+                            $rApp->getMethod('sys')->invoke(null, 'File')->get($file),
+                            basename($file),
+                            $file,
+                        )
+                    )
+                );
+
+                $this->assertTrue(true);
+            } catch (Throwable $e) {
+                $this->fail(sprintf('%s in %s:%d', $e->getMessage(), $e->getFile(), $e->getLine()));
             }
         }
     }
@@ -96,27 +108,31 @@ class BasicTest extends TestCase
         $dir = $rApp->getStaticPropertyValue('sys')['config']['templater_xslt_dir'];
 
         foreach ($rApp->getMethod('sys')->invoke(null, 'Dir')->scan($dir, true, true) as $file) {
-            if (is_file($file) && str_ends_with($file, '.xsl')) {
-                if (extension_loaded('libxml')
-                    && extension_loaded('dom')
-                    && extension_loaded('xsl')
-                ) {
-                    $doc = new DOMDocument();
+            if (!is_file($file)
+                || !str_ends_with($file, '.xsl')
+            ) {
+                continue;
+            }
 
-                    $success = $doc->load($file, LIBXML_NOCDATA);
+            if (extension_loaded('libxml')
+                && extension_loaded('dom')
+                && extension_loaded('xsl')
+            ) {
+                $doc = new DOMDocument();
 
-                    $this->assertNotFalse($success);
+                $success = $doc->load($file, LIBXML_NOCDATA);
 
-                    if (!$success) {
-                        continue;
-                    }
+                $this->assertNotFalse($success);
 
-                    $success = (new XSLTProcessor())->importStylesheet($doc);
-
-                    $this->assertNotFalse($success);
-                } else {
-                    $this->fail('For XSL tests your need extensions: LIBXML, DOM and XSL');
+                if (!$success) {
+                    continue;
                 }
+
+                $success = (new XSLTProcessor())->importStylesheet($doc);
+
+                $this->assertNotFalse($success);
+            } else {
+                $this->fail('For XSL tests your need extensions: LIBXML, DOM and XSL');
             }
         }
     }
