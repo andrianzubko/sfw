@@ -26,7 +26,7 @@ class SimpleMessage extends \App\Notify
             ->setBody(
                 self::sys('Templater')->transform('notify.send.message.html', [
                     'message' => $this->message,
-                ])
+                ]),
             )
             ->send();
     }

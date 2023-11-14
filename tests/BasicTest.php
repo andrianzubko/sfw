@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpComposerExtensionStubsInspection */
 
 use PHPUnit\Framework\{AssertionFailedError, ExpectationFailedException, TestCase};
 
@@ -78,15 +78,13 @@ class BasicTest extends TestCase
             }
 
             try {
-                $twig->parse(
-                    $twig->tokenize(
-                        new Twig\Source(
-                            $rApp->getMethod('sys')->invoke(null, 'File')->get($file),
-                            basename($file),
-                            $file,
-                        )
+                $twig->parse($twig->tokenize(
+                    new Twig\Source(
+                        $rApp->getMethod('sys')->invoke(null, 'File')->get($file),
+                        basename($file),
+                        $file,
                     )
-                );
+                ));
 
                 $this->assertTrue(true);
             } catch (Throwable $e) {
@@ -114,26 +112,26 @@ class BasicTest extends TestCase
                 continue;
             }
 
-            if (extension_loaded('libxml')
-                && extension_loaded('dom')
-                && extension_loaded('xsl')
+            if (!extension_loaded('libxml')
+                || !extension_loaded('dom')
+                || !extension_loaded('xsl')
             ) {
-                $doc = new DOMDocument();
-
-                $success = $doc->load($file, LIBXML_NOCDATA);
-
-                $this->assertNotFalse($success);
-
-                if (!$success) {
-                    continue;
-                }
-
-                $success = (new XSLTProcessor())->importStylesheet($doc);
-
-                $this->assertNotFalse($success);
-            } else {
                 $this->fail('For XSL tests your need extensions: LIBXML, DOM and XSL');
             }
+
+            $doc = new DOMDocument();
+
+            $success = $doc->load($file, LIBXML_NOCDATA);
+
+            $this->assertNotFalse($success);
+
+            if (!$success) {
+                continue;
+            }
+
+            $success = (new XSLTProcessor())->importStylesheet($doc);
+
+            $this->assertNotFalse($success);
         }
     }
 }
