@@ -79,11 +79,7 @@ class BasicTest extends TestCase
 
             try {
                 $twig->parse($twig->tokenize(
-                    new Twig\Source(
-                        $rApp->getMethod('sys')->invoke(null, 'File')->get($file),
-                        basename($file),
-                        $file,
-                    )
+                    new Twig\Source($rApp->getMethod('sys')->invoke(null, 'File')->get($file), basename($file), $file)
                 ));
 
                 $this->assertTrue(true);
@@ -112,10 +108,7 @@ class BasicTest extends TestCase
                 continue;
             }
 
-            if (!extension_loaded('libxml')
-                || !extension_loaded('dom')
-                || !extension_loaded('xsl')
-            ) {
+            if (!extension_loaded('libxml') || !extension_loaded('dom') || !extension_loaded('xsl')) {
                 $this->fail('For XSL tests your need extensions: LIBXML, DOM and XSL');
             }
 
